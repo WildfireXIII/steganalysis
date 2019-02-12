@@ -6,7 +6,7 @@ help:
 all: help
 
 
-stegoalgs: external/s-uniward
+stegoalgs: external/s-uniward external/wow
 
 boss: data/raw/boss
 
@@ -28,6 +28,13 @@ external/s-uniward: external
 	cd external/s-uniward && tar xzvf S-UNIWARD_linux_make_v10.tar.gz 
 	rm external/s-uniward/S-UNIWARD_linux_make_v10.tar.gz 
 
+external/wow: external
+	mkdir external/wow
+	wget http://dde.binghamton.edu/download/stego_algorithms/download/WOW_linux_make_v10.tar.gz
+	mv WOW_linux_make_v10.tar.gz external/wow
+	cd external/wow && tar xzvf WOW_linux_make_v10.tar.gz 
+	rm external/wow/WOW_linux_make_v10.tar.gz 
+	
 data/raw/boss: data/raw
 	mkdir data/raw/boss
 	cd data/raw/boss; \
