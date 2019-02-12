@@ -10,7 +10,7 @@ echo "Running s-uniward stego algorithm..."
 
 mkdir data/cache data/cache/s-uniward
 
-bash external/s-uniward/S-UNIWARD_linux_make_v10/executable/S-UNIWARD -v -I data/raw/boss/cover/ -O data/cache/s-uniward -a 0.4
+external/s-uniward/S-UNIWARD_linux_make_v10/executable/S-UNIWARD -v -I data/raw/boss/cover/ -O data/cache/s-uniward -a 0.4
 
 echo "Done!"
 

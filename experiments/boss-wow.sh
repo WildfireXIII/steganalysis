@@ -9,7 +9,7 @@ echo "Running wow stego algorithm..."
 
 mkdir data/cache data/cache/wow
 
-bash external/wow/WOW_linux_make_v10/executable/WOW -v -I data/raw/boss/cover/ -O data/cache/wow -a 0.4
+external/wow/WOW_linux_make_v10/executable/WOW -v -I data/raw/boss/cover/ -O data/cache/wow -a 0.4
 
 echo "Done!"
 
