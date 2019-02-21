@@ -150,11 +150,11 @@ print(y_test.shape)
 model = tf.keras.Sequential()
 
 # Must define the input shape in the first layer of the neural network
-model.add(tf.keras.layers.Conv2D(filters=1, kernel_size=3, padding='same', activation='tanh', input_shape=(512,512,1)))
+model.add(tf.keras.layers.Conv2D(filters=1, kernel_size=3, padding='valid', activation='tanh', input_shape=(512,512,1)))
 #model.add(tf.keras.layers.MaxPooling2D(pool_size=8))
 #model.add(tf.keras.layers.Dropout(0.3))
 
-model.add(tf.keras.layers.Conv2D(filters=64, kernel_size=509, padding='same', activation='tanh'))
+model.add(tf.keras.layers.Conv2D(filters=64, kernel_size=509, padding='valid', activation='tanh'))
 #model.add(tf.keras.layers.Conv2D(filters=64, kernel_size=509, padding='same', activation='tanh'))
 
 #model.add(tf.keras.layers.MaxPooling2D(pool_size=2))
@@ -170,10 +170,10 @@ model.add(tf.keras.layers.Softmax())
 model.summary()
 
 # compile model
-model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
+#model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
 
-from keras.callbacks import ModelCheckpoint
+#from keras.callbacks import ModelCheckpoint
 
-checkpointer = ModelCheckpoint(filepath='model.weights.best', verbose=1, save_best_only=True)
+#checkpointer = ModelCheckpoint(filepath='model.weights.best', verbose=1, save_best_only=True)
 
-model.fit(x_train, y_train, batch_size=1, epochs=10, callbacks=[checkpointer])
+#model.fit(x_train, y_train, batch_size=1, epochs=10, callbacks=[checkpointer])
