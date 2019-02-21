@@ -170,10 +170,10 @@ model.add(tf.keras.layers.Softmax())
 model.summary()
 
 # compile model
-#model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
+model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
 
-#from keras.callbacks import ModelCheckpoint
+from keras.callbacks import ModelCheckpoint
 
-#checkpointer = ModelCheckpoint(filepath='model.weights.best', verbose=1, save_best_only=True)
+checkpointer = ModelCheckpoint(filepath='model.weights.best', verbose=1, save_best_only=True)
 
-#model.fit(x_train, y_train, batch_size=1, epochs=10, callbacks=[checkpointer])
+model.fit(x_train, y_train, batch_size=1, epochs=10, callbacks=[checkpointer])
