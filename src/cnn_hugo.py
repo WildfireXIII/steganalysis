@@ -3,6 +3,9 @@ import numpy as np
 import matplotlib.pyplot as plt
 from tqdm import tqdm
 
+import sys
+
+# cmdline args: 1 = cover path 2 = stego pat 3 = % data 4 = # epochs
 
 import re
 
@@ -30,8 +33,11 @@ def read_pgm(filename, byteorder='>'):
 
 
 
-cover_images_path = "../data/raw/boss/cover"
-hugo_images_path = "../data/raw/boss/stego"
+#cover_images_path = "../data/raw/boss/cover"
+#hugo_images_path = "../data/raw/boss/stego"
+
+cover_images_path = sys.argv[1]
+hugo_images_path = sys.argv[2]
 
 
 
@@ -47,7 +53,7 @@ hugo_images = []
 failed_hugo = []
 
 
-percentage = .1
+percentage = float(sys.argv[3])
 
 for i in tqdm(range(1, int(10001*percentage)+1)):
     try:
@@ -80,35 +86,23 @@ print(len(hugo_images))
 
 
 
-split = .8
-
-split_index = int(len(cover_images)*split)
-rem_count = len(cover_images) - split_index
+#split = .8
+#
+#split_index = int(len(cover_images)*split)
+#rem_count = len(cover_images) - split_index
+#
+#split_hugo_index = int(len(hugo_images)*split)
+#rem_hugo_count = int(len(hugo_images) - split_hugo_index
 
 # make training data
 
-# add cover images based on split
-x_train = cover_images[0:split_index]
-y_train = [(1,0)]*split_index
+# add cover
+x = cover_images
+y = [(1,0)]*len(cover_images)
 
-# add hugo images based on split
-x_train.extend(hugo_images[0:split_index])
-y_train.extend([(0,1)]*split_index)
-
-
-# make test data
-
-# add cover images based on split
-x_test = cover_images[split_index:]
-y_test = [0]*rem_count
-
-# add hugo images based on split
-x_test.extend(hugo_images[split_index:])
-y_test.extend([1]*rem_count)
-
-
-print(len(x_train), len(y_train))
-print(len(x_test), len(y_test))
+# add stego
+x.extend(hugo_images)
+y.extend([(0,1)]*len(hugo_images))
 
 
 def randomize(a, b):
@@ -119,21 +113,28 @@ def randomize(a, b):
     shuffled_b = b[permutation]
     return shuffled_a, shuffled_b
 
-
 # numpyify data
-x_train = np.array(x_train)
-x_test = np.array(x_test)
+x = np.array(x)
+y = np.array(y)
 
-y_train = np.array(y_train)
-y_test = np.array(y_test)
+x, y = randomize(x, y)
 
-# shuffle training data
-x_train, y_train = randomize(x_train, y_train)
+
+# split into training and testing
+split = .8
+
+split_index = int(len(x)*split)
+rem_count = len(x) - split_index
+
+x_train = x[0:split_index]
+y_train = y[0:split_index]
+
+x_test = x[split_index:]
+y_test = y[split_index:]
 
 # normalize data
 x_train = x_train.astype("float32") / 255
 x_test = x_train.astype("float32") / 255
-
 
 # get the data into the right shape
 w, h = 512, 512
@@ -176,4 +177,10 @@ from keras.callbacks import ModelCheckpoint
 
 checkpointer = ModelCheckpoint(filepath='model.weights.best', verbose=1, save_best_only=True)
 
-model.fit(x_train, y_train, batch_size=1, epochs=10, callbacks=[checkpointer])
+model.fit(x_train, y_train, batch_size=1, epochs=int(sys.argv[4]), callbacks=[checkpointer], shuffle=True)
+
+
+model.load_weights('model.weights.best')
+
+score = model.evaluate(x_test, y_test, verbose=0)
+print("\n", "Test accuracy:", score[1])
