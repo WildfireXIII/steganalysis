@@ -151,11 +151,11 @@ print(y_test.shape)
 model = tf.keras.Sequential()
 
 # Must define the input shape in the first layer of the neural network
-model.add(tf.keras.layers.Conv2D(filters=1, kernel_size=3, padding='same', activation='tanh', input_shape=(512,512,1)))
+model.add(tf.keras.layers.Conv2D(filters=1, kernel_size=3, padding='valid', activation='tanh', input_shape=(512,512,1)))
 #model.add(tf.keras.layers.MaxPooling2D(pool_size=8))
 #model.add(tf.keras.layers.Dropout(0.3))
 
-model.add(tf.keras.layers.Conv2D(filters=64, kernel_size=509, padding='same', activation='tanh'))
+model.add(tf.keras.layers.Conv2D(filters=64, kernel_size=509, padding='valid', activation='tanh'))
 #model.add(tf.keras.layers.Conv2D(filters=64, kernel_size=509, padding='same', activation='tanh'))
 
 #model.add(tf.keras.layers.MaxPooling2D(pool_size=2))
