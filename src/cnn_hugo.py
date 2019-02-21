@@ -134,7 +134,7 @@ y_test = y[split_index:]
 
 # normalize data
 x_train = x_train.astype("float32") / 255
-x_test = x_train.astype("float32") / 255
+x_test = x_test.astype("float32") / 255
 
 # get the data into the right shape
 w, h = 512, 512
@@ -180,7 +180,7 @@ checkpointer = ModelCheckpoint(filepath='model.weights.best', verbose=1, save_be
 model.fit(x_train, y_train, batch_size=1, epochs=int(sys.argv[4]), callbacks=[checkpointer], shuffle=True)
 
 
-model.load_weights('model.weights.best')
+#model.load_weights('model.weights.best')
 
 score = model.evaluate(x_test, y_test, verbose=0)
 print("\n", "Test accuracy:", score[1])
