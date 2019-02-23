@@ -2,6 +2,7 @@ import tensorflow as tf
 import numpy as np
 import matplotlib.pyplot as plt
 from tqdm import tqdm
+from sklearn.model_selection import train_test_split
 
 import sys
 
@@ -98,20 +99,20 @@ print(len(stego_images))
 
 # add cover
 x = cover_images
-y = [(1,0)]*len(cover_images)
+y = [(1.0,0.0)]*len(cover_images)
 
 # add stego
 x.extend(stego_images)
-y.extend([(0,1)]*len(stego_images))
+y.extend([(0.0,1.0)]*len(stego_images))
 
 
-def randomize(a, b):
-    # Generate the permutation index array.
-    permutation = np.random.permutation(a.shape[0])
-    # Shuffle the arrays by giving the permutation in the square brackets.
-    shuffled_a = a[permutation]
-    shuffled_b = b[permutation]
-    return shuffled_a, shuffled_b
+#def randomize(a, b):
+#    # Generate the permutation index array.
+#    permutation = np.random.permutation(a.shape[0])
+#    # Shuffle the arrays by giving the permutation in the square brackets.
+#    shuffled_a = a[permutation]
+#    shuffled_b = b[permutation]
+#    return shuffled_a, shuffled_b
 
 # numpyify data
 x = np.array(x)
@@ -125,21 +126,23 @@ std = np.std(x)
 x -= mean
 x *= (1/std)
 
+x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=.2, random_state=42)
 
-x, y = randomize(x, y)
 
-
-# split into training and testing
-split = .8
-
-split_index = int(len(x)*split)
-rem_count = len(x) - split_index
-
-x_train = x[0:split_index]
-y_train = y[0:split_index]
-
-x_test = x[split_index:]
-y_test = y[split_index:]
+#x, y = randomize(x, y)
+#
+#
+## split into training and testing
+#split = .8
+#
+#split_index = int(len(x)*split)
+#rem_count = len(x) - split_index
+#
+#x_train = x[0:split_index]
+#y_train = y[0:split_index]
+#
+#x_test = x[split_index:]
+#y_test = y[split_index:]
 
 # normalize data
 #x_train = x_train.astype("float32") / 255
@@ -182,14 +185,14 @@ model.add(tf.keras.layers.Activation(tf.nn.log_softmax))
 model.summary()
 
 # compile model
-sgd = tf.keras.optimizers.SGD(lr=.5, decay=5e-7, momentum=0)
-model.compile(loss='categorical_crossentropy', optimizer=sgd, metrics=['acc'])
+sgd = tf.keras.optimizers.SGD(lr=.005, decay=5e-7, momentum=0)
+model.compile(loss='categorical_crossentropy', optimizer=sgd, metrics=['accuracy'])
 
 from keras.callbacks import ModelCheckpoint
 
 checkpointer = ModelCheckpoint(filepath='model.weights.best', verbose=1, save_best_only=True)
 
-model.fit(x_train, y_train, batch_size=100, epochs=int(sys.argv[4]), shuffle=True, validation_split=.15)
+model.fit(x_train, y_train, batch_size=20, epochs=int(sys.argv[4]), shuffle=True, validation_split=.15)
 
 
 model.load_weights('model.weights.best')
