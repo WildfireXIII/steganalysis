@@ -172,7 +172,9 @@ model.add(tf.keras.layers.Conv2D(filters=64, kernel_size=509, padding='valid', a
 
 model.add(tf.keras.layers.Flatten()) # note that in the paper they use reshape to 64x4 instead of flattening
 model.add(tf.keras.layers.Dense(2))
-model.add(tf.keras.layers.Softmax())
+model.add(tf.keras.layers.Activation(tf.nn.log_softmax))
+#model.add(tf.keras.layers.Softmax())
+
 #model.add(tf.keras.layers.Dropout(0.5))
 #model.add(tf.keras.layers.Dense(1, activation='sigmoid'))
 
