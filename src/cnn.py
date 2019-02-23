@@ -37,20 +37,20 @@ def read_pgm(filename, byteorder='>'):
 #hugo_images_path = "../data/raw/boss/stego"
 
 cover_images_path = sys.argv[1]
-hugo_images_path = sys.argv[2]
+stego_images_path = sys.argv[2]
 
 
 
 
-image = read_pgm(cover_images_path + "/150.pgm")
+#image = read_pgm(cover_images_path + "/150.pgm")
 #plt.imshow(image)
 #print(image)
 
 cover_images = []
 failed_cover = []
 
-hugo_images = []
-failed_hugo = []
+stego_images = []
+failed_stego = []
 
 
 percentage = float(sys.argv[3])
@@ -64,25 +64,25 @@ for i in tqdm(range(1, int(10001*percentage)+1)):
         
 for i in tqdm(range(1, int(10001*percentage)+1)):
     try:
-        image = read_pgm(hugo_images_path + "/" + str(i) + ".pgm")
-        hugo_images.append(image)
+        image = read_pgm(stego_images_path + "/" + str(i) + ".pgm")
+        stego_images.append(image)
     except:
-        failed_hugo.append(i)
+        failed_stego.append(i)
 
 
 
 print(len(failed_cover))
 print(failed_cover)
-print(len(failed_hugo))
-print(failed_hugo)
+print(len(failed_stego))
+print(failed_stego)
 
 
 # get same number in both sets
 # TODO: these are not removing the same images in both
 
-hugo_images.pop(0)
+stego_images.pop(0)
 print(len(cover_images))
-print(len(hugo_images))
+print(len(stego_images))
 
 
 
@@ -101,8 +101,8 @@ x = cover_images
 y = [(1,0)]*len(cover_images)
 
 # add stego
-x.extend(hugo_images)
-y.extend([(0,1)]*len(hugo_images))
+x.extend(stego_images)
+y.extend([(0,1)]*len(stego_images))
 
 
 def randomize(a, b):
@@ -116,6 +116,15 @@ def randomize(a, b):
 # numpyify data
 x = np.array(x)
 y = np.array(y)
+
+
+# normalize
+x = x.astype("float32") / 255
+mean = np.mean(x)
+std = np.std(x)
+x -= mean
+x *= (1/std)
+
 
 x, y = randomize(x, y)
 
@@ -133,8 +142,8 @@ x_test = x[split_index:]
 y_test = y[split_index:]
 
 # normalize data
-x_train = x_train.astype("float32") / 255
-x_test = x_test.astype("float32") / 255
+#x_train = x_train.astype("float32") / 255
+#x_test = x_test.astype("float32") / 255
 
 # get the data into the right shape
 w, h = 512, 512
@@ -171,16 +180,16 @@ model.add(tf.keras.layers.Softmax())
 model.summary()
 
 # compile model
-model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
+sgd = tf.keras.optimizers.SGD(lr=.5, decay=5e-7, momentum=0)
+model.compile(loss='categorical_crossentropy', optimizer=sgd, metrics=['acc'])
 
 from keras.callbacks import ModelCheckpoint
 
 checkpointer = ModelCheckpoint(filepath='model.weights.best', verbose=1, save_best_only=True)
 
-model.fit(x_train, y_train, batch_size=1, epochs=int(sys.argv[4]), callbacks=[checkpointer], shuffle=True)
+model.fit(x_train, y_train, batch_size=100, epochs=int(sys.argv[4]), shuffle=True, validation_split=.15)
 
 
-#model.load_weights('model.weights.best')
-
+model.load_weights('model.weights.best')
 score = model.evaluate(x_test, y_test, verbose=0)
 print("\n", "Test accuracy:", score[1])
