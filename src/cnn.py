@@ -186,7 +186,7 @@ model.summary()
 
 # compile model
 sgd = tf.keras.optimizers.SGD(lr=.005, decay=5e-7, momentum=0)
-model.compile(loss='categorical_crossentropy', optimizer=sgd, metrics=['accuracy'])
+model.compile(loss='categorical_crossentropy', optimizer=sgd, metrics=['categorical_accuracy'])
 
 from keras.callbacks import ModelCheckpoint
 
@@ -198,3 +198,7 @@ model.fit(x_train, y_train, batch_size=20, epochs=int(sys.argv[4]), shuffle=True
 model.load_weights('model.weights.best')
 score = model.evaluate(x_test, y_test, verbose=0)
 print("\n", "Test accuracy:", score[1])
+
+outputs = model.predict(x_test[0:3])
+print(outputs)
+
