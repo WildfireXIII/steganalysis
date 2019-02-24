@@ -194,7 +194,7 @@ from keras.callbacks import ModelCheckpoint
 
 checkpointer = ModelCheckpoint(filepath='model.weights.best', verbose=1, save_best_only=True)
 
-model.fit(x_train, y_train, batch_size=20, epochs=int(sys.argv[4]), shuffle=True, validation_split=.15)
+model.fit(x_train, y_train, batch_size=20, epochs=int(sys.argv[4]), shuffle=True, validation_split=.15, verbose=2)
 
 
 #model.load_weights('model.weights.best')
