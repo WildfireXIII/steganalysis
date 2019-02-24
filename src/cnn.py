@@ -32,7 +32,8 @@ def read_pgm(filename, byteorder='>'):
                             offset=len(header)
                             ).reshape((int(height), int(width)))
 
-
+def log_loss(y_true, y_pred):
+    return tf.losses.log_loss(y_true, y_pred)
 
 #cover_images_path = "../data/raw/boss/cover"
 #hugo_images_path = "../data/raw/boss/stego"
@@ -99,11 +100,11 @@ print(len(stego_images))
 
 # add cover
 x = cover_images
-y = [(1.0,0.0)]*len(cover_images)
+y = [(0,1)]*len(cover_images)
 
 # add stego
 x.extend(stego_images)
-y.extend([(0.0,1.0)]*len(stego_images))
+y.extend([(1,0)]*len(stego_images))
 
 
 #def randomize(a, b):
@@ -175,8 +176,8 @@ model.add(tf.keras.layers.Conv2D(filters=64, kernel_size=509, padding='valid', a
 
 model.add(tf.keras.layers.Flatten()) # note that in the paper they use reshape to 64x4 instead of flattening
 model.add(tf.keras.layers.Dense(2))
-model.add(tf.keras.layers.Activation(tf.nn.log_softmax))
-#model.add(tf.keras.layers.Softmax())
+#model.add(tf.keras.layers.Activation(tf.nn.log_softmax))
+model.add(tf.keras.layers.Softmax())
 
 #model.add(tf.keras.layers.Dropout(0.5))
 #model.add(tf.keras.layers.Dense(1, activation='sigmoid'))
@@ -195,10 +196,10 @@ checkpointer = ModelCheckpoint(filepath='model.weights.best', verbose=1, save_be
 model.fit(x_train, y_train, batch_size=20, epochs=int(sys.argv[4]), shuffle=True, validation_split=.15)
 
 
-model.load_weights('model.weights.best')
+#model.load_weights('model.weights.best')
 score = model.evaluate(x_test, y_test, verbose=0)
 print("\n", "Test accuracy:", score[1])
 
-outputs = model.predict(x_test[0:3])
-print(outputs)
+#outputs = model.predict(x_test[0:3])
+#print(outputs)
 
