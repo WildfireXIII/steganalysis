@@ -6,13 +6,13 @@ import sys
 input_dir = sys.argv[1]
 output_dir = sys.argv[2]
 algorithm_path = sys.argv[3]
-num_diff_keys = sys.argv[4]
+num_diff_keys = int(sys.argv[4])
 
 # get all image filenames
 images = os.listdir(input_dir)
 
 images_per_key = int(len(images)/num_diff_keys)
-rem = len(images%num_diff_keys)
+rem = len(images)%num_diff_keys
 
 
 image_index = 1
