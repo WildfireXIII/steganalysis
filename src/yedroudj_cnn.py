@@ -45,6 +45,7 @@ cover_images_path = sys.argv[1]
 stego_images_path = sys.argv[2]
 
 
+print(sys.argv)
 
 
 #image = read_pgm(cover_images_path + "/150.pgm")
@@ -60,14 +61,14 @@ failed_stego = []
 
 percentage = float(sys.argv[3])
 
-for i in tqdm(range(1, int(10001*percentage)+1)):
+for i in range(1, int(10001*percentage)+1):
     try:
         image = read_pgm(cover_images_path + "/" + str(i) + ".pgm")
         cover_images.append(image)
     except:
         failed_cover.append(i)
         
-for i in tqdm(range(1, int(10001*percentage)+1)):
+for i in range(1, int(10001*percentage)+1):
     try:
         image = read_pgm(stego_images_path + "/" + str(i) + ".pgm")
         stego_images.append(image)
@@ -125,8 +126,8 @@ y = np.array(y)
 x_resized = []
 
 # resize all images
-for image in tqdm(x):
-    resized = np.array(Image.fromarray(image).resize(256, 256))
+for image in x:
+    resized = np.array(Image.fromarray(image).resize((256, 256)))
     x_resized.append(resized)
 
 
@@ -210,12 +211,12 @@ model.add(tf.keras.layers.AveragePooling2D(pool_size=(5,5), strides=2))
 model.add(tf.keras.layers.Conv2D(filters=128, kernel_size=3, padding='same', activation='linear'))
 model.add(tf.keras.layers.BatchNormalization())
 model.add(tf.keras.layers.ReLU())
-model.add(tf.keras.layers.GlobalAveragePooling2D(pool_size=(32,32), strides=1))
+model.add(tf.keras.layers.GlobalAveragePooling2D())
 
 
 model.add(tf.keras.layers.Flatten()) # note that in the paper they use reshape to 64x4 instead of flattening
-model.add(tf.keras.layers.Dense(256, activation='ReLU'))
-model.add(tf.keras.layers.Dense(1024, activation='ReLU'))
+model.add(tf.keras.layers.Dense(256, activation='relu'))
+model.add(tf.keras.layers.Dense(1024, activation='relu'))
 model.add(tf.keras.layers.Dense(2))
 model.add(tf.keras.layers.Softmax())
 
@@ -240,21 +241,21 @@ model.summary()
 def step_decay(epoch):
     initial_lrate = .01
     drop = .1
-    epochs_drop = 900/10
+    epochs_drop = 40/10
     lrate = initial_lrate * math.pow(drop, math.floor((1+epoch)/epochs_drop))
     return lrate
 
 lrate = tf.keras.callbacks.LearningRateScheduler(step_decay)
 
 # compile model
-sgd = tf.keras.optimizers.SGD(lr=lrate, decay=1e-5, momentum=.95)
+sgd = tf.keras.optimizers.SGD(lr=.01, decay=1e-5, momentum=.95)
 model.compile(loss='categorical_crossentropy', optimizer=sgd, metrics=['categorical_accuracy'])
 
 from keras.callbacks import ModelCheckpoint
 
 checkpointer = ModelCheckpoint(filepath='model.weights.best', verbose=1, save_best_only=True)
 
-model.fit(x_train, y_train, batch_size=20, epochs=int(sys.argv[4]), shuffle=True, validation_split=.15, verbose=2)
+model.fit(x_train, y_train, batch_size=20, epochs=int(sys.argv[4]), shuffle=True, validation_split=.15, verbose=2, callbacks=[lrate])
 
 
 #model.load_weights('model.weights.best')
