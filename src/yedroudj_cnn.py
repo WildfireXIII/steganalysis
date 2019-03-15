@@ -130,7 +130,7 @@ for image in x:
     resized = np.array(Image.fromarray(image).resize((256, 256)))
     x_resized.append(resized)
 
-x = x_resized
+x = np.asarray(x_resized)
 
 # normalize
 x = x.astype("float32") / 255
@@ -162,7 +162,7 @@ x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=.2, random_s
 #x_test = x_test.astype("float32") / 255
 
 # get the data into the right shape
-w, h = 512, 512
+w, h = 256, 256
 x_train = x_train.reshape(x_train.shape[0], w, h, 1)
 x_test = x_test.reshape(x_test.shape[0], w, h, 1)
 
@@ -177,7 +177,7 @@ model = tf.keras.Sequential()
 
 
 # (don't know if below is needed, it's sort of preprocessing)
-model.add(tf.keras.layers.Conv2D(filters=30, kernel_size=5, padding='same', activation='tanh', input_shape=(512,512,1)))
+model.add(tf.keras.layers.Conv2D(filters=30, kernel_size=5, padding='same', activation='tanh', input_shape=(256,256,1)))
 
 
 
