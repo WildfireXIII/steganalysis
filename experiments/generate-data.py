@@ -12,7 +12,7 @@ num_diff_keys = int(sys.argv[4])
 images = os.listdir(input_dir)
 
 images_per_key = int(len(images)/num_diff_keys)
-rem = len(images%num_diff_keys)
+rem = len(images)%num_diff_keys
 
 
 image_index = 1

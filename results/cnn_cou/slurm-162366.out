@@ -1,0 +1,615 @@
+  0%|          | 0/10001 [00:00<?, ?it/s]  3%|▎         | 310/10001 [00:00<00:03, 3099.21it/s]  6%|▌         | 618/10001 [00:00<00:03, 3091.86it/s]  9%|▉         | 935/10001 [00:00<00:02, 3112.25it/s] 13%|█▎        | 1276/10001 [00:00<00:02, 3195.46it/s] 16%|█▌        | 1622/10001 [00:00<00:02, 3269.10it/s] 20%|█▉        | 1972/10001 [00:00<00:02, 3332.87it/s] 23%|██▎       | 2289/10001 [00:00<00:02, 3280.77it/s] 26%|██▌       | 2608/10001 [00:00<00:02, 3250.43it/s] 29%|██▉       | 2924/10001 [00:00<00:02, 3222.43it/s] 32%|███▏      | 3235/10001 [00:01<00:02, 3171.95it/s] 36%|███▌      | 3569/10001 [00:01<00:01, 3220.19it/s] 39%|███▉      | 3889/10001 [00:01<00:01, 3212.74it/s] 42%|████▏     | 4231/10001 [00:01<00:01, 3270.21it/s] 46%|████▌     | 4584/10001 [00:01<00:01, 3343.79it/s] 49%|████▉     | 4921/10001 [00:01<00:01, 3350.16it/s] 53%|█████▎    | 5256/10001 [00:01<00:01, 3339.68it/s] 56%|█████▌    | 5590/10001 [00:01<00:01, 3305.34it/s] 59%|█████▉    | 5921/10001 [00:01<00:01, 3289.67it/s] 62%|██████▏   | 6250/10001 [00:01<00:01, 3246.99it/s] 66%|██████▌   | 6576/10001 [00:02<00:01, 3250.44it/s] 69%|██████▉   | 6902/10001 [00:02<00:00, 3205.67it/s] 72%|███████▏  | 7223/10001 [00:02<00:00, 3136.64it/s] 75%|███████▌  | 7538/10001 [00:02<00:00, 3136.02it/s] 79%|███████▊  | 7874/10001 [00:02<00:00, 3198.34it/s] 82%|████████▏ | 8200/10001 [00:02<00:00, 3214.40it/s] 85%|████████▌ | 8522/10001 [00:02<00:00, 3176.87it/s] 88%|████████▊ | 8841/10001 [00:02<00:00, 3164.51it/s] 92%|█████████▏| 9158/10001 [00:02<00:00, 3102.31it/s] 95%|█████████▍| 9469/10001 [00:02<00:00, 3098.24it/s] 98%|█████████▊| 9790/10001 [00:03<00:00, 3129.07it/s]100%|██████████| 10001/10001 [00:03<00:00, 3216.82it/s]
+  0%|          | 0/10001 [00:00<?, ?it/s]  3%|▎         | 310/10001 [00:00<00:03, 3092.35it/s]  6%|▌         | 604/10001 [00:00<00:03, 3043.28it/s]  9%|▉         | 908/10001 [00:00<00:02, 3040.12it/s] 12%|█▏        | 1217/10001 [00:00<00:02, 3052.43it/s] 15%|█▌        | 1514/10001 [00:00<00:02, 3023.87it/s] 18%|█▊        | 1820/10001 [00:00<00:02, 3033.18it/s] 21%|██        | 2116/10001 [00:00<00:02, 3008.01it/s] 24%|██▍       | 2392/10001 [00:00<00:02, 2927.21it/s] 27%|██▋       | 2669/10001 [00:00<00:02, 2876.03it/s] 30%|██▉       | 2955/10001 [00:01<00:02, 2870.47it/s] 32%|███▏      | 3241/10001 [00:01<00:02, 2866.80it/s] 36%|███▌      | 3551/10001 [00:01<00:02, 2931.76it/s] 39%|███▉      | 3880/10001 [00:01<00:02, 3028.50it/s] 42%|████▏     | 4212/10001 [00:01<00:01, 3109.58it/s] 45%|████▌     | 4528/10001 [00:01<00:01, 3124.22it/s] 48%|████▊     | 4840/10001 [00:01<00:01, 3119.96it/s] 52%|█████▏    | 5159/10001 [00:01<00:01, 3140.57it/s] 55%|█████▍    | 5473/10001 [00:01<00:01, 3133.54it/s] 58%|█████▊    | 5787/10001 [00:01<00:01, 3089.85it/s] 61%|██████    | 6107/10001 [00:02<00:01, 3121.63it/s] 64%|██████▍   | 6420/10001 [00:02<00:01, 3091.51it/s] 67%|██████▋   | 6730/10001 [00:02<00:01, 3024.90it/s] 70%|███████   | 7041/10001 [00:02<00:00, 3047.69it/s] 74%|███████▎  | 7351/10001 [00:02<00:00, 3061.86it/s] 77%|███████▋  | 7674/10001 [00:02<00:00, 3109.74it/s] 80%|███████▉  | 7986/10001 [00:02<00:00, 3070.16it/s] 83%|████████▎ | 8294/10001 [00:02<00:00, 3049.49it/s] 86%|████████▌ | 8600/10001 [00:02<00:00, 3042.94it/s] 89%|████████▉ | 8905/10001 [00:02<00:00, 3012.98it/s] 92%|█████████▏| 9207/10001 [00:03<00:00, 2991.46it/s] 95%|█████████▌| 9508/10001 [00:03<00:00, 2996.15it/s] 98%|█████████▊| 9832/10001 [00:03<00:00, 3064.10it/s]100%|██████████| 10001/10001 [00:03<00:00, 3044.52it/s]2019-02-28 18:05:04.323208: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.1 SSE4.2 AVX AVX2 FMA
+2019-02-28 18:05:04.499582: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1432] Found device 0 with properties: 
+name: Tesla K80 major: 3 minor: 7 memoryClockRate(GHz): 0.8235
+pciBusID: 0000:06:00.0
+totalMemory: 11.17GiB freeMemory: 11.10GiB
+2019-02-28 18:05:04.499625: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1511] Adding visible gpu devices: 0
+2019-02-28 18:05:04.809421: I tensorflow/core/common_runtime/gpu/gpu_device.cc:982] Device interconnect StreamExecutor with strength 1 edge matrix:
+2019-02-28 18:05:04.809470: I tensorflow/core/common_runtime/gpu/gpu_device.cc:988]      0 
+2019-02-28 18:05:04.809478: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1001] 0:   N 
+2019-02-28 18:05:04.809739: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1115] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 10758 MB memory) -> physical GPU (device: 0, name: Tesla K80, pci bus id: 0000:06:00.0, compute capability: 3.7)
+41
+[151, 439, 964, 1154, 1353, 1570, 1655, 2164, 2271, 2490, 2665, 3476, 3625, 3642, 3842, 4855, 4968, 4989, 5060, 5133, 5352, 5757, 5871, 5931, 6215, 6240, 6659, 6848, 6855, 6881, 6926, 7175, 7180, 7337, 7362, 7933, 7991, 8066, 8943, 9426, 10001]
+47
+[151, 439, 724, 840, 964, 1154, 1353, 1570, 1655, 2164, 2271, 2490, 2665, 3476, 3625, 3642, 3842, 4136, 4855, 4968, 4989, 5060, 5133, 5352, 5757, 5871, 5931, 6215, 6240, 6659, 6848, 6855, 6881, 6926, 7175, 7180, 7337, 7362, 7904, 7933, 7991, 8066, 9125, 9332, 9712, 9915, 10001]
+9960
+9953
+(15930, 512, 512, 1)
+(3983, 512, 512, 1)
+(15930, 2)
+(3983, 2)
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #   
+=================================================================
+conv2d (Conv2D)              (None, 510, 510, 1)       10        
+_________________________________________________________________
+conv2d_1 (Conv2D)            (None, 2, 2, 64)          16581248  
+_________________________________________________________________
+flatten (Flatten)            (None, 256)               0         
+_________________________________________________________________
+dense (Dense)                (None, 2)                 514       
+_________________________________________________________________
+softmax (Softmax)            (None, 2)                 0         
+=================================================================
+Total params: 16,581,772
+Trainable params: 16,581,772
+Non-trainable params: 0
+_________________________________________________________________
+Train on 13540 samples, validate on 2390 samples
+Epoch 1/40
+ - 212s - loss: 0.7377 - categorical_accuracy: 0.4899 - val_loss: 0.7259 - val_categorical_accuracy: 0.4929
+Epoch 2/40
+ - 133s - loss: 0.7037 - categorical_accuracy: 0.4972 - val_loss: 0.7193 - val_categorical_accuracy: 0.4000
+Epoch 3/40
+ - 133s - loss: 0.6984 - categorical_accuracy: 0.5205 - val_loss: 0.7114 - val_categorical_accuracy: 0.4310
+Epoch 4/40
+ - 133s - loss: 0.6856 - categorical_accuracy: 0.5522 - val_loss: 0.7510 - val_categorical_accuracy: 0.3452
+Epoch 5/40
+ - 133s - loss: 0.6623 - categorical_accuracy: 0.6024 - val_loss: 0.8241 - val_categorical_accuracy: 0.3540
+Epoch 6/40
+ - 133s - loss: 0.6287 - categorical_accuracy: 0.6713 - val_loss: 0.8631 - val_categorical_accuracy: 0.4117
+Epoch 7/40
+ - 133s - loss: 0.5842 - categorical_accuracy: 0.7436 - val_loss: 0.9489 - val_categorical_accuracy: 0.4393
+Epoch 8/40
+ - 133s - loss: 0.5231 - categorical_accuracy: 0.8097 - val_loss: 0.9283 - val_categorical_accuracy: 0.5038
+Epoch 9/40
+ - 133s - loss: 0.4501 - categorical_accuracy: 0.8556 - val_loss: 0.9605 - val_categorical_accuracy: 0.5477
+Epoch 10/40
+ - 133s - loss: 0.3801 - categorical_accuracy: 0.8791 - val_loss: 0.9763 - val_categorical_accuracy: 0.6025
+Epoch 11/40
+ - 133s - loss: 0.3056 - categorical_accuracy: 0.8959 - val_loss: 0.9439 - val_categorical_accuracy: 0.6201
+Epoch 12/40
+ - 133s - loss: 0.2521 - categorical_accuracy: 0.9057 - val_loss: 0.8258 - val_categorical_accuracy: 0.6745
+Epoch 13/40
+ - 133s - loss: 0.2064 - categorical_accuracy: 0.9167 - val_loss: 0.9288 - val_categorical_accuracy: 0.6799
+Epoch 14/40
+ - 133s - loss: 0.1740 - categorical_accuracy: 0.9258 - val_loss: 0.8806 - val_categorical_accuracy: 0.7059
+Epoch 15/40
+ - 133s - loss: 0.1551 - categorical_accuracy: 0.9332 - val_loss: 0.7745 - val_categorical_accuracy: 0.7293
+Epoch 16/40
+ - 133s - loss: 0.1326 - categorical_accuracy: 0.9400 - val_loss: 0.8280 - val_categorical_accuracy: 0.7464
+Epoch 17/40
+ - 133s - loss: 0.1147 - categorical_accuracy: 0.9467 - val_loss: 0.8655 - val_categorical_accuracy: 0.7469
+Epoch 18/40
+ - 133s - loss: 0.1039 - categorical_accuracy: 0.9536 - val_loss: 0.8909 - val_categorical_accuracy: 0.7477
+Epoch 19/40
+ - 133s - loss: 0.0946 - categorical_accuracy: 0.9552 - val_loss: 0.8020 - val_categorical_accuracy: 0.7611
+Epoch 20/40
+ - 133s - loss: 0.0882 - categorical_accuracy: 0.9594 - val_loss: 0.8149 - val_categorical_accuracy: 0.7674
+Epoch 21/40
+ - 133s - loss: 0.0762 - categorical_accuracy: 0.9631 - val_loss: 0.7862 - val_categorical_accuracy: 0.7828
+Epoch 22/40
+ - 133s - loss: 0.0755 - categorical_accuracy: 0.9637 - val_loss: 0.8808 - val_categorical_accuracy: 0.7665
+Epoch 23/40
+ - 133s - loss: 0.0673 - categorical_accuracy: 0.9665 - val_loss: 0.8067 - val_categorical_accuracy: 0.7828
+Epoch 24/40
+ - 134s - loss: 0.0674 - categorical_accuracy: 0.9660 - val_loss: 0.8439 - val_categorical_accuracy: 0.7833
+Epoch 25/40
+ - 131s - loss: 0.0695 - categorical_accuracy: 0.9699 - val_loss: 0.8737 - val_categorical_accuracy: 0.7824
+Epoch 26/40
+ - 131s - loss: 0.0748 - categorical_accuracy: 0.9668 - val_loss: 0.9195 - val_categorical_accuracy: 0.7741
+Epoch 27/40
+ - 131s - loss: 0.0571 - categorical_accuracy: 0.9739 - val_loss: 0.7691 - val_categorical_accuracy: 0.8050
+Epoch 28/40
+ - 131s - loss: 0.0621 - categorical_accuracy: 0.9725 - val_loss: 0.8142 - val_categorical_accuracy: 0.7987
+Epoch 29/40
+ - 131s - loss: 0.0599 - categorical_accuracy: 0.9726 - val_loss: 0.8334 - val_categorical_accuracy: 0.7979
+Epoch 30/40
+ - 131s - loss: 0.0535 - categorical_accuracy: 0.9737 - val_loss: 0.7952 - val_categorical_accuracy: 0.8113
+Epoch 31/40
+ - 131s - loss: 0.0576 - categorical_accuracy: 0.9723 - val_loss: 0.7966 - val_categorical_accuracy: 0.8067
+Epoch 32/40
+ - 131s - loss: 0.0586 - categorical_accuracy: 0.9744 - val_loss: 0.8322 - val_categorical_accuracy: 0.8067
+Epoch 33/40
+ - 131s - loss: 0.0515 - categorical_accuracy: 0.9766 - val_loss: 0.8133 - val_categorical_accuracy: 0.8096
+Epoch 34/40
+ - 131s - loss: 0.0561 - categorical_accuracy: 0.9758 - val_loss: 0.7669 - val_categorical_accuracy: 0.8138
+Epoch 35/40
+ - 131s - loss: 0.0494 - categorical_accuracy: 0.9781 - val_loss: 0.7794 - val_categorical_accuracy: 0.8126
+Epoch 36/40
+ - 131s - loss: 0.0482 - categorical_accuracy: 0.9775 - val_loss: 0.8295 - val_categorical_accuracy: 0.8096
+Epoch 37/40
+ - 131s - loss: 0.0476 - categorical_accuracy: 0.9781 - val_loss: 0.7688 - val_categorical_accuracy: 0.8117
+Epoch 38/40
+ - 131s - loss: 0.0483 - categorical_accuracy: 0.9781 - val_loss: 0.7890 - val_categorical_accuracy: 0.8142
+Epoch 39/40
+ - 131s - loss: 0.0452 - categorical_accuracy: 0.9793 - val_loss: 0.8399 - val_categorical_accuracy: 0.8184
+Epoch 40/40
+ - 131s - loss: 0.0396 - categorical_accuracy: 0.9805 - val_loss: 0.7506 - val_categorical_accuracy: 0.8243
+
+Using TensorFlow backend.
+
+ Test accuracy: 0.8174742656588524
+  0%|          | 0/10001 [00:00<?, ?it/s]  4%|▎         | 353/10001 [00:00<00:02, 3529.79it/s]  7%|▋         | 712/10001 [00:00<00:02, 3545.19it/s] 11%|█         | 1077/10001 [00:00<00:02, 3574.76it/s] 15%|█▍        | 1459/10001 [00:00<00:02, 3644.96it/s] 18%|█▊        | 1821/10001 [00:00<00:02, 3636.55it/s] 22%|██▏       | 2180/10001 [00:00<00:02, 3619.55it/s] 25%|██▌       | 2546/10001 [00:00<00:02, 3630.23it/s] 29%|██▉       | 2928/10001 [00:00<00:01, 3684.46it/s] 33%|███▎      | 3297/10001 [00:00<00:01, 3685.63it/s] 37%|███▋      | 3670/10001 [00:01<00:01, 3696.64it/s] 40%|████      | 4036/10001 [00:01<00:01, 3683.81it/s] 44%|████▍     | 4404/10001 [00:01<00:01, 3681.43it/s] 48%|████▊     | 4772/10001 [00:01<00:01, 3679.04it/s] 51%|█████▏    | 5144/10001 [00:01<00:01, 3689.99it/s] 55%|█████▌    | 5515/10001 [00:01<00:01, 3695.16it/s] 59%|█████▉    | 5885/10001 [00:01<00:01, 3695.11it/s] 63%|██████▎   | 6260/10001 [00:01<00:01, 3709.28it/s] 66%|██████▋   | 6632/10001 [00:01<00:00, 3712.37it/s] 70%|███████   | 7008/10001 [00:01<00:00, 3725.35it/s] 74%|███████▍  | 7381/10001 [00:02<00:00, 3695.26it/s] 78%|███████▊  | 7751/10001 [00:02<00:00, 3690.38it/s] 81%|████████  | 8120/10001 [00:02<00:00, 3617.06it/s] 85%|████████▍ | 8482/10001 [00:02<00:00, 3608.60it/s] 88%|████████▊ | 8847/10001 [00:02<00:00, 3618.61it/s] 92%|█████████▏| 9209/10001 [00:02<00:00, 3570.39it/s] 96%|█████████▌| 9567/10001 [00:02<00:00, 3553.28it/s] 99%|█████████▉| 9923/10001 [00:02<00:00, 3547.75it/s]100%|██████████| 10001/10001 [00:02<00:00, 3645.25it/s]
+  0%|          | 0/10001 [00:00<?, ?it/s]  4%|▎         | 369/10001 [00:00<00:02, 3681.83it/s]  7%|▋         | 727/10001 [00:00<00:02, 3647.83it/s] 11%|█         | 1085/10001 [00:00<00:02, 3626.63it/s] 14%|█▍        | 1448/10001 [00:00<00:02, 3626.74it/s] 18%|█▊        | 1816/10001 [00:00<00:02, 3642.45it/s] 22%|██▏       | 2178/10001 [00:00<00:02, 3634.94it/s] 25%|██▌       | 2537/10001 [00:00<00:02, 3620.61it/s] 29%|██▉       | 2909/10001 [00:00<00:01, 3648.62it/s] 33%|███▎      | 3277/10001 [00:00<00:01, 3655.55it/s] 36%|███▋      | 3636/10001 [00:01<00:01, 3633.88it/s] 40%|████      | 4001/10001 [00:01<00:01, 3638.31it/s] 44%|████▎     | 4358/10001 [00:01<00:01, 3616.26it/s] 47%|████▋     | 4733/10001 [00:01<00:01, 3652.69it/s] 51%|█████     | 5104/10001 [00:01<00:01, 3667.38it/s] 55%|█████▍    | 5475/10001 [00:01<00:01, 3677.32it/s] 58%|█████▊    | 5842/10001 [00:01<00:01, 3655.01it/s] 62%|██████▏   | 6207/10001 [00:01<00:01, 3648.57it/s] 66%|██████▌   | 6572/10001 [00:01<00:00, 3633.90it/s] 70%|██████▉   | 6963/10001 [00:01<00:00, 3711.01it/s] 73%|███████▎  | 7348/10001 [00:02<00:00, 3748.85it/s] 77%|███████▋  | 7732/10001 [00:02<00:00, 3775.11it/s] 81%|████████  | 8116/10001 [00:02<00:00, 3791.57it/s] 85%|████████▍ | 8496/10001 [00:02<00:00, 3660.77it/s] 89%|████████▊ | 8864/10001 [00:02<00:00, 3665.65it/s] 92%|█████████▏| 9232/10001 [00:02<00:00, 3522.80it/s] 96%|█████████▌| 9586/10001 [00:02<00:00, 3337.20it/s] 99%|█████████▉| 9923/10001 [00:02<00:00, 3238.24it/s]100%|██████████| 10001/10001 [00:02<00:00, 3586.02it/s]2019-02-28 19:36:12.831213: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.1 SSE4.2 AVX AVX2 FMA
+2019-02-28 19:36:13.009447: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1432] Found device 0 with properties: 
+name: Tesla K80 major: 3 minor: 7 memoryClockRate(GHz): 0.8235
+pciBusID: 0000:06:00.0
+totalMemory: 11.17GiB freeMemory: 11.10GiB
+2019-02-28 19:36:13.009487: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1511] Adding visible gpu devices: 0
+2019-02-28 19:36:13.329078: I tensorflow/core/common_runtime/gpu/gpu_device.cc:982] Device interconnect StreamExecutor with strength 1 edge matrix:
+2019-02-28 19:36:13.329136: I tensorflow/core/common_runtime/gpu/gpu_device.cc:988]      0 
+2019-02-28 19:36:13.329144: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1001] 0:   N 
+2019-02-28 19:36:13.329406: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1115] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 10758 MB memory) -> physical GPU (device: 0, name: Tesla K80, pci bus id: 0000:06:00.0, compute capability: 3.7)
+41
+[151, 439, 964, 1154, 1353, 1570, 1655, 2164, 2271, 2490, 2665, 3476, 3625, 3642, 3842, 4855, 4968, 4989, 5060, 5133, 5352, 5757, 5871, 5931, 6215, 6240, 6659, 6848, 6855, 6881, 6926, 7175, 7180, 7337, 7362, 7933, 7991, 8066, 8943, 9426, 10001]
+48
+[151, 360, 439, 724, 964, 1070, 1154, 1353, 1570, 1655, 2164, 2271, 2490, 2665, 3476, 3625, 3642, 3842, 4136, 4909, 4968, 4989, 5060, 5133, 5352, 5757, 5871, 5931, 6215, 6240, 6659, 6730, 6848, 6855, 6926, 7175, 7180, 7337, 7362, 7680, 7933, 7991, 8066, 8884, 8943, 9426, 9603, 10001]
+9960
+9952
+(15929, 512, 512, 1)
+(3983, 512, 512, 1)
+(15929, 2)
+(3983, 2)
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #   
+=================================================================
+conv2d (Conv2D)              (None, 510, 510, 1)       10        
+_________________________________________________________________
+conv2d_1 (Conv2D)            (None, 2, 2, 64)          16581248  
+_________________________________________________________________
+flatten (Flatten)            (None, 256)               0         
+_________________________________________________________________
+dense (Dense)                (None, 2)                 514       
+_________________________________________________________________
+softmax (Softmax)            (None, 2)                 0         
+=================================================================
+Total params: 16,581,772
+Trainable params: 16,581,772
+Non-trainable params: 0
+_________________________________________________________________
+Train on 13539 samples, validate on 2390 samples
+Epoch 1/40
+ - 289s - loss: 0.7861 - categorical_accuracy: 0.4773 - val_loss: 0.7096 - val_categorical_accuracy: 0.4531
+Epoch 2/40
+ - 133s - loss: 0.7049 - categorical_accuracy: 0.4943 - val_loss: 0.7302 - val_categorical_accuracy: 0.4992
+Epoch 3/40
+ - 133s - loss: 0.7040 - categorical_accuracy: 0.4950 - val_loss: 0.6987 - val_categorical_accuracy: 0.4042
+Epoch 4/40
+ - 133s - loss: 0.7013 - categorical_accuracy: 0.5020 - val_loss: 0.7125 - val_categorical_accuracy: 0.4075
+Epoch 5/40
+ - 133s - loss: 0.6952 - categorical_accuracy: 0.5238 - val_loss: 0.7419 - val_categorical_accuracy: 0.4766
+Epoch 6/40
+ - 133s - loss: 0.6908 - categorical_accuracy: 0.5295 - val_loss: 0.7550 - val_categorical_accuracy: 0.3226
+Epoch 7/40
+ - 133s - loss: 0.6830 - categorical_accuracy: 0.5372 - val_loss: 0.7836 - val_categorical_accuracy: 0.4418
+Epoch 8/40
+ - 133s - loss: 0.6758 - categorical_accuracy: 0.5450 - val_loss: 0.8113 - val_categorical_accuracy: 0.3958
+Epoch 9/40
+ - 133s - loss: 0.6685 - categorical_accuracy: 0.5571 - val_loss: 0.8382 - val_categorical_accuracy: 0.2854
+Epoch 10/40
+ - 133s - loss: 0.6598 - categorical_accuracy: 0.5604 - val_loss: 0.8788 - val_categorical_accuracy: 0.3707
+Epoch 11/40
+ - 133s - loss: 0.6527 - categorical_accuracy: 0.5606 - val_loss: 0.8989 - val_categorical_accuracy: 0.2795
+Epoch 12/40
+ - 133s - loss: 0.6446 - categorical_accuracy: 0.5712 - val_loss: 0.9381 - val_categorical_accuracy: 0.2209
+Epoch 13/40
+ - 133s - loss: 0.6357 - categorical_accuracy: 0.5806 - val_loss: 1.0130 - val_categorical_accuracy: 0.2477
+Epoch 14/40
+ - 133s - loss: 0.6280 - categorical_accuracy: 0.5785 - val_loss: 1.0668 - val_categorical_accuracy: 0.2163
+Epoch 15/40
+ - 133s - loss: 0.6147 - categorical_accuracy: 0.5856 - val_loss: 1.1624 - val_categorical_accuracy: 0.1904
+Epoch 16/40
+ - 133s - loss: 0.6050 - categorical_accuracy: 0.5882 - val_loss: 1.1877 - val_categorical_accuracy: 0.2000
+Epoch 17/40
+ - 133s - loss: 0.5994 - categorical_accuracy: 0.5927 - val_loss: 1.4049 - val_categorical_accuracy: 0.1803
+Epoch 18/40
+ - 133s - loss: 0.5901 - categorical_accuracy: 0.5966 - val_loss: 1.4621 - val_categorical_accuracy: 0.1820
+Epoch 19/40
+ - 133s - loss: 0.5804 - categorical_accuracy: 0.6041 - val_loss: 1.3119 - val_categorical_accuracy: 0.1849
+Epoch 20/40
+ - 133s - loss: 0.5703 - categorical_accuracy: 0.6142 - val_loss: 1.4418 - val_categorical_accuracy: 0.1870
+Epoch 21/40
+ - 133s - loss: 0.5606 - categorical_accuracy: 0.6293 - val_loss: 1.5125 - val_categorical_accuracy: 0.1916
+Epoch 22/40
+ - 133s - loss: 0.5555 - categorical_accuracy: 0.6418 - val_loss: 1.5719 - val_categorical_accuracy: 0.2021
+Epoch 23/40
+ - 133s - loss: 0.5490 - categorical_accuracy: 0.6430 - val_loss: 1.7437 - val_categorical_accuracy: 0.2046
+Epoch 24/40
+ - 133s - loss: 0.5437 - categorical_accuracy: 0.6560 - val_loss: 1.4133 - val_categorical_accuracy: 0.2050
+Epoch 25/40
+ - 140s - loss: 0.5236 - categorical_accuracy: 0.6749 - val_loss: 1.7253 - val_categorical_accuracy: 0.2180
+Epoch 26/40
+ - 129s - loss: 0.5100 - categorical_accuracy: 0.6994 - val_loss: 1.7065 - val_categorical_accuracy: 0.2167
+Epoch 27/40
+ - 129s - loss: 0.4991 - categorical_accuracy: 0.7156 - val_loss: 1.5892 - val_categorical_accuracy: 0.2264
+Epoch 28/40
+ - 128s - loss: 0.4807 - categorical_accuracy: 0.7317 - val_loss: 1.9464 - val_categorical_accuracy: 0.2381
+Epoch 29/40
+ - 129s - loss: 0.4645 - categorical_accuracy: 0.7520 - val_loss: 1.8963 - val_categorical_accuracy: 0.2531
+Epoch 30/40
+ - 129s - loss: 0.4469 - categorical_accuracy: 0.7644 - val_loss: 2.2174 - val_categorical_accuracy: 0.2456
+Epoch 31/40
+ - 129s - loss: 0.4223 - categorical_accuracy: 0.7791 - val_loss: 2.0056 - val_categorical_accuracy: 0.2603
+Epoch 32/40
+ - 129s - loss: 0.3984 - categorical_accuracy: 0.7886 - val_loss: 1.8245 - val_categorical_accuracy: 0.2569
+Epoch 33/40
+ - 129s - loss: 0.3788 - categorical_accuracy: 0.8020 - val_loss: 1.8692 - val_categorical_accuracy: 0.2745
+Epoch 34/40
+ - 129s - loss: 0.3550 - categorical_accuracy: 0.8134 - val_loss: 2.0207 - val_categorical_accuracy: 0.2795
+Epoch 35/40
+ - 129s - loss: 0.3410 - categorical_accuracy: 0.8188 - val_loss: 2.2736 - val_categorical_accuracy: 0.2929
+Epoch 36/40
+ - 129s - loss: 0.3198 - categorical_accuracy: 0.8252 - val_loss: 2.3034 - val_categorical_accuracy: 0.3038
+Epoch 37/40
+ - 129s - loss: 0.2951 - categorical_accuracy: 0.8381 - val_loss: 2.3851 - val_categorical_accuracy: 0.3272
+Epoch 38/40
+ - 129s - loss: 0.2856 - categorical_accuracy: 0.8410 - val_loss: 2.2431 - val_categorical_accuracy: 0.3452
+Epoch 39/40
+ - 129s - loss: 0.2719 - categorical_accuracy: 0.8438 - val_loss: 2.4578 - val_categorical_accuracy: 0.3552
+Epoch 40/40
+ - 129s - loss: 0.2544 - categorical_accuracy: 0.8553 - val_loss: 2.3918 - val_categorical_accuracy: 0.3674
+
+Using TensorFlow backend.
+
+ Test accuracy: 0.3760984182851625
+  0%|          | 0/10001 [00:00<?, ?it/s]  4%|▎         | 354/10001 [00:00<00:02, 3537.00it/s]  7%|▋         | 712/10001 [00:00<00:02, 3548.26it/s] 11%|█         | 1073/10001 [00:00<00:02, 3565.06it/s] 14%|█▍        | 1432/10001 [00:00<00:02, 3571.35it/s] 18%|█▊        | 1805/10001 [00:00<00:02, 3616.94it/s] 22%|██▏       | 2174/10001 [00:00<00:02, 3635.94it/s] 25%|██▌       | 2543/10001 [00:00<00:02, 3648.84it/s] 29%|██▉       | 2924/10001 [00:00<00:01, 3693.87it/s] 33%|███▎      | 3285/10001 [00:00<00:01, 3667.69it/s] 37%|███▋      | 3681/10001 [00:01<00:01, 3750.49it/s] 41%|████      | 4060/10001 [00:01<00:01, 3760.55it/s] 44%|████▍     | 4430/10001 [00:01<00:01, 3685.21it/s] 48%|████▊     | 4802/10001 [00:01<00:01, 3695.47it/s] 52%|█████▏    | 5169/10001 [00:01<00:01, 3681.27it/s] 55%|█████▌    | 5536/10001 [00:01<00:01, 3617.98it/s] 59%|█████▉    | 5897/10001 [00:01<00:01, 3598.01it/s] 63%|██████▎   | 6256/10001 [00:01<00:01, 3578.93it/s] 66%|██████▌   | 6614/10001 [00:01<00:00, 3576.42it/s] 70%|██████▉   | 6981/10001 [00:01<00:00, 3601.67it/s] 74%|███████▎  | 7358/10001 [00:02<00:00, 3648.82it/s] 77%|███████▋  | 7734/10001 [00:02<00:00, 3679.59it/s] 81%|████████  | 8103/10001 [00:02<00:00, 3643.95it/s] 85%|████████▍ | 8468/10001 [00:02<00:00, 3594.15it/s] 88%|████████▊ | 8842/10001 [00:02<00:00, 3636.11it/s] 92%|█████████▏| 9213/10001 [00:02<00:00, 3657.88it/s] 96%|█████████▌| 9580/10001 [00:02<00:00, 3650.81it/s]100%|█████████▉| 9957/10001 [00:02<00:00, 3684.76it/s]100%|██████████| 10001/10001 [00:02<00:00, 3652.23it/s]
+  0%|          | 0/10001 [00:00<?, ?it/s]  4%|▎         | 360/10001 [00:00<00:02, 3593.68it/s]  7%|▋         | 735/10001 [00:00<00:02, 3637.90it/s] 11%|█         | 1091/10001 [00:00<00:02, 3613.40it/s] 15%|█▍        | 1455/10001 [00:00<00:02, 3618.62it/s] 18%|█▊        | 1815/10001 [00:00<00:02, 3611.78it/s] 22%|██▏       | 2177/10001 [00:00<00:02, 3613.77it/s] 25%|██▌       | 2536/10001 [00:00<00:02, 3603.89it/s] 29%|██▉       | 2915/10001 [00:00<00:01, 3656.90it/s] 33%|███▎      | 3276/10001 [00:00<00:01, 3639.98it/s] 37%|███▋      | 3656/10001 [00:01<00:01, 3685.60it/s] 40%|████      | 4019/10001 [00:01<00:01, 3666.70it/s] 44%|████▍     | 4384/10001 [00:01<00:01, 3659.53it/s] 48%|████▊     | 4753/10001 [00:01<00:01, 3666.76it/s] 51%|█████▏    | 5131/10001 [00:01<00:01, 3698.21it/s] 55%|█████▍    | 5499/10001 [00:01<00:01, 3679.46it/s] 59%|█████▉    | 5887/10001 [00:01<00:01, 3735.79it/s] 63%|██████▎   | 6263/10001 [00:01<00:00, 3742.24it/s] 66%|██████▋   | 6637/10001 [00:01<00:00, 3737.76it/s] 70%|███████   | 7011/10001 [00:01<00:00, 3706.03it/s] 74%|███████▍  | 7385/10001 [00:02<00:00, 3715.24it/s] 78%|███████▊  | 7757/10001 [00:02<00:00, 3705.57it/s] 81%|████████▏ | 8128/10001 [00:02<00:00, 3661.32it/s] 85%|████████▍ | 8495/10001 [00:02<00:00, 3600.95it/s] 89%|████████▊ | 8856/10001 [00:02<00:00, 3550.16it/s] 92%|█████████▏| 9212/10001 [00:02<00:00, 3534.69it/s] 96%|█████████▌| 9566/10001 [00:02<00:00, 3475.29it/s] 99%|█████████▉| 9916/10001 [00:02<00:00, 3481.79it/s]100%|██████████| 10001/10001 [00:02<00:00, 3630.74it/s]2019-02-28 21:08:08.550817: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.1 SSE4.2 AVX AVX2 FMA
+2019-02-28 21:08:08.725635: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1432] Found device 0 with properties: 
+name: Tesla K80 major: 3 minor: 7 memoryClockRate(GHz): 0.8235
+pciBusID: 0000:06:00.0
+totalMemory: 11.17GiB freeMemory: 11.10GiB
+2019-02-28 21:08:08.725674: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1511] Adding visible gpu devices: 0
+2019-02-28 21:08:09.046266: I tensorflow/core/common_runtime/gpu/gpu_device.cc:982] Device interconnect StreamExecutor with strength 1 edge matrix:
+2019-02-28 21:08:09.046311: I tensorflow/core/common_runtime/gpu/gpu_device.cc:988]      0 
+2019-02-28 21:08:09.046318: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1001] 0:   N 
+2019-02-28 21:08:09.046567: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1115] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 10758 MB memory) -> physical GPU (device: 0, name: Tesla K80, pci bus id: 0000:06:00.0, compute capability: 3.7)
+41
+[151, 439, 964, 1154, 1353, 1570, 1655, 2164, 2271, 2490, 2665, 3476, 3625, 3642, 3842, 4855, 4968, 4989, 5060, 5133, 5352, 5757, 5871, 5931, 6215, 6240, 6659, 6848, 6855, 6881, 6926, 7175, 7180, 7337, 7362, 7933, 7991, 8066, 8943, 9426, 10001]
+45
+[151, 439, 724, 964, 1154, 1353, 1570, 2164, 2271, 2490, 2665, 3476, 3625, 3642, 3842, 4855, 4968, 4989, 5060, 5133, 5352, 5757, 5871, 6215, 6240, 6659, 6666, 6848, 6855, 6926, 7175, 7180, 7337, 7362, 7746, 7770, 7933, 7991, 8066, 8884, 8943, 9426, 9547, 9603, 10001]
+9960
+9955
+(15932, 512, 512, 1)
+(3983, 512, 512, 1)
+(15932, 2)
+(3983, 2)
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #   
+=================================================================
+conv2d (Conv2D)              (None, 510, 510, 1)       10        
+_________________________________________________________________
+conv2d_1 (Conv2D)            (None, 2, 2, 64)          16581248  
+_________________________________________________________________
+flatten (Flatten)            (None, 256)               0         
+_________________________________________________________________
+dense (Dense)                (None, 2)                 514       
+_________________________________________________________________
+softmax (Softmax)            (None, 2)                 0         
+=================================================================
+Total params: 16,581,772
+Trainable params: 16,581,772
+Non-trainable params: 0
+_________________________________________________________________
+Train on 13542 samples, validate on 2390 samples
+Epoch 1/40
+ - 292s - loss: 0.7686 - categorical_accuracy: 0.4720 - val_loss: 0.7126 - val_categorical_accuracy: 0.4690
+Epoch 2/40
+ - 133s - loss: 0.7048 - categorical_accuracy: 0.4953 - val_loss: 0.7179 - val_categorical_accuracy: 0.4502
+Epoch 3/40
+ - 133s - loss: 0.6989 - categorical_accuracy: 0.5114 - val_loss: 0.7839 - val_categorical_accuracy: 0.4787
+Epoch 4/40
+ - 133s - loss: 0.6988 - categorical_accuracy: 0.5124 - val_loss: 0.7415 - val_categorical_accuracy: 0.4607
+Epoch 5/40
+ - 133s - loss: 0.6936 - categorical_accuracy: 0.5216 - val_loss: 0.8557 - val_categorical_accuracy: 0.4590
+Epoch 6/40
+ - 133s - loss: 0.6878 - categorical_accuracy: 0.5327 - val_loss: 0.7970 - val_categorical_accuracy: 0.4222
+Epoch 7/40
+ - 133s - loss: 0.6848 - categorical_accuracy: 0.5287 - val_loss: 0.8675 - val_categorical_accuracy: 0.4075
+Epoch 8/40
+ - 133s - loss: 0.6773 - categorical_accuracy: 0.5351 - val_loss: 0.8583 - val_categorical_accuracy: 0.4301
+Epoch 9/40
+ - 133s - loss: 0.6694 - categorical_accuracy: 0.5481 - val_loss: 0.9717 - val_categorical_accuracy: 0.3962
+Epoch 10/40
+ - 133s - loss: 0.6617 - categorical_accuracy: 0.5545 - val_loss: 0.9272 - val_categorical_accuracy: 0.2477
+Epoch 11/40
+ - 133s - loss: 0.6532 - categorical_accuracy: 0.5534 - val_loss: 1.0319 - val_categorical_accuracy: 0.3904
+Epoch 12/40
+ - 133s - loss: 0.6453 - categorical_accuracy: 0.5592 - val_loss: 1.0288 - val_categorical_accuracy: 0.2803
+Epoch 13/40
+ - 133s - loss: 0.6363 - categorical_accuracy: 0.5704 - val_loss: 1.1283 - val_categorical_accuracy: 0.3184
+Epoch 14/40
+ - 133s - loss: 0.6291 - categorical_accuracy: 0.5654 - val_loss: 1.1408 - val_categorical_accuracy: 0.2833
+Epoch 15/40
+ - 133s - loss: 0.6221 - categorical_accuracy: 0.5639 - val_loss: 1.2579 - val_categorical_accuracy: 0.2510
+Epoch 16/40
+ - 133s - loss: 0.6152 - categorical_accuracy: 0.5675 - val_loss: 1.2085 - val_categorical_accuracy: 0.2448
+Epoch 17/40
+ - 133s - loss: 0.6074 - categorical_accuracy: 0.5723 - val_loss: 1.3623 - val_categorical_accuracy: 0.2301
+Epoch 18/40
+ - 133s - loss: 0.6005 - categorical_accuracy: 0.5721 - val_loss: 1.4086 - val_categorical_accuracy: 0.2205
+Epoch 19/40
+ - 133s - loss: 0.5940 - categorical_accuracy: 0.5785 - val_loss: 1.5070 - val_categorical_accuracy: 0.2623
+Epoch 20/40
+ - 133s - loss: 0.5890 - categorical_accuracy: 0.5737 - val_loss: 1.5208 - val_categorical_accuracy: 0.1992
+Epoch 21/40
+ - 133s - loss: 0.5806 - categorical_accuracy: 0.5837 - val_loss: 1.5694 - val_categorical_accuracy: 0.2042
+Epoch 22/40
+ - 133s - loss: 0.5757 - categorical_accuracy: 0.5858 - val_loss: 1.6738 - val_categorical_accuracy: 0.1820
+Epoch 23/40
+ - 133s - loss: 0.5696 - categorical_accuracy: 0.5809 - val_loss: 1.6879 - val_categorical_accuracy: 0.2339
+Epoch 24/40
+ - 133s - loss: 0.5662 - categorical_accuracy: 0.5923 - val_loss: 1.8435 - val_categorical_accuracy: 0.2025
+Epoch 25/40
+ - 133s - loss: 0.5613 - categorical_accuracy: 0.5917 - val_loss: 1.8616 - val_categorical_accuracy: 0.1921
+Epoch 26/40
+ - 133s - loss: 0.5563 - categorical_accuracy: 0.5956 - val_loss: 1.9495 - val_categorical_accuracy: 0.1987
+Epoch 27/40
+ - 133s - loss: 0.5502 - categorical_accuracy: 0.6071 - val_loss: 2.0256 - val_categorical_accuracy: 0.2084
+Epoch 28/40
+ - 134s - loss: 0.5476 - categorical_accuracy: 0.5950 - val_loss: 2.0606 - val_categorical_accuracy: 0.1912
+Epoch 29/40
+ - 135s - loss: 0.5459 - categorical_accuracy: 0.6051 - val_loss: 1.9933 - val_categorical_accuracy: 0.1983
+Epoch 30/40
+ - 130s - loss: 0.5430 - categorical_accuracy: 0.6100 - val_loss: 1.8226 - val_categorical_accuracy: 0.2067
+Epoch 31/40
+ - 130s - loss: 0.5400 - categorical_accuracy: 0.6075 - val_loss: 1.9335 - val_categorical_accuracy: 0.1996
+Epoch 32/40
+ - 130s - loss: 0.5370 - categorical_accuracy: 0.6190 - val_loss: 2.1947 - val_categorical_accuracy: 0.1828
+Epoch 33/40
+ - 130s - loss: 0.5334 - categorical_accuracy: 0.6165 - val_loss: 2.1086 - val_categorical_accuracy: 0.1916
+Epoch 34/40
+ - 131s - loss: 0.5296 - categorical_accuracy: 0.6282 - val_loss: 2.2647 - val_categorical_accuracy: 0.1887
+Epoch 35/40
+ - 130s - loss: 0.5299 - categorical_accuracy: 0.6235 - val_loss: 2.0038 - val_categorical_accuracy: 0.1983
+Epoch 36/40
+ - 130s - loss: 0.5259 - categorical_accuracy: 0.6290 - val_loss: 2.1900 - val_categorical_accuracy: 0.1941
+Epoch 37/40
+ - 130s - loss: 0.5249 - categorical_accuracy: 0.6292 - val_loss: 2.2316 - val_categorical_accuracy: 0.1883
+Epoch 38/40
+ - 130s - loss: 0.5230 - categorical_accuracy: 0.6381 - val_loss: 2.1559 - val_categorical_accuracy: 0.1979
+Epoch 39/40
+ - 130s - loss: 0.5225 - categorical_accuracy: 0.6359 - val_loss: 2.2119 - val_categorical_accuracy: 0.1757
+Epoch 40/40
+ - 130s - loss: 0.5249 - categorical_accuracy: 0.6356 - val_loss: 2.5985 - val_categorical_accuracy: 0.1799
+
+Using TensorFlow backend.
+
+ Test accuracy: 0.183781069650322
+  0%|          | 0/10001 [00:00<?, ?it/s]  4%|▎         | 354/10001 [00:00<00:02, 3530.94it/s]  7%|▋         | 695/10001 [00:00<00:02, 3491.77it/s] 10%|█         | 1030/10001 [00:00<00:02, 3444.91it/s] 14%|█▍        | 1385/10001 [00:00<00:02, 3474.07it/s] 17%|█▋        | 1726/10001 [00:00<00:02, 3452.82it/s] 21%|██        | 2072/10001 [00:00<00:02, 3454.31it/s] 24%|██▍       | 2422/10001 [00:00<00:02, 3465.76it/s] 28%|██▊       | 2792/10001 [00:00<00:02, 3532.40it/s] 32%|███▏      | 3165/10001 [00:00<00:01, 3589.40it/s] 35%|███▌      | 3511/10001 [00:01<00:01, 3522.21it/s] 39%|███▊      | 3864/10001 [00:01<00:01, 3521.48it/s] 42%|████▏     | 4216/10001 [00:01<00:01, 3520.65it/s] 46%|████▌     | 4566/10001 [00:01<00:01, 3513.38it/s] 49%|████▉     | 4917/10001 [00:01<00:01, 3511.58it/s] 53%|█████▎    | 5268/10001 [00:01<00:01, 3509.46it/s] 56%|█████▌    | 5618/10001 [00:01<00:01, 3503.64it/s] 60%|█████▉    | 5997/10001 [00:01<00:01, 3583.58it/s] 64%|██████▎   | 6362/10001 [00:01<00:01, 3603.00it/s] 67%|██████▋   | 6741/10001 [00:01<00:00, 3655.99it/s] 71%|███████   | 7116/10001 [00:02<00:00, 3683.17it/s] 75%|███████▌  | 7505/10001 [00:02<00:00, 3740.32it/s] 79%|███████▉  | 7880/10001 [00:02<00:00, 3730.29it/s] 83%|████████▎ | 8258/10001 [00:02<00:00, 3743.10it/s] 86%|████████▋ | 8633/10001 [00:02<00:00, 3738.35it/s] 90%|█████████ | 9007/10001 [00:02<00:00, 3719.26it/s] 94%|█████████▍| 9384/10001 [00:02<00:00, 3734.19it/s] 98%|█████████▊| 9758/10001 [00:02<00:00, 3624.23it/s]100%|██████████| 10001/10001 [00:02<00:00, 3586.45it/s]
+  0%|          | 0/10001 [00:00<?, ?it/s]  3%|▎         | 344/10001 [00:00<00:02, 3436.08it/s]  7%|▋         | 684/10001 [00:00<00:02, 3422.87it/s] 10%|█         | 1032/10001 [00:00<00:02, 3438.99it/s] 14%|█▎        | 1371/10001 [00:00<00:02, 3421.61it/s] 17%|█▋        | 1712/10001 [00:00<00:02, 3415.39it/s] 21%|██        | 2067/10001 [00:00<00:02, 3454.03it/s] 24%|██▍       | 2406/10001 [00:00<00:02, 3433.15it/s] 28%|██▊       | 2753/10001 [00:00<00:02, 3442.33it/s] 31%|███       | 3099/10001 [00:00<00:02, 3446.82it/s] 34%|███▍      | 3441/10001 [00:01<00:01, 3437.85it/s] 38%|███▊      | 3798/10001 [00:01<00:01, 3474.39it/s] 41%|████▏     | 4147/10001 [00:01<00:01, 3476.59it/s] 45%|████▍     | 4490/10001 [00:01<00:02, 2667.44it/s] 48%|████▊     | 4782/10001 [00:01<00:02, 2002.98it/s] 50%|█████     | 5025/10001 [00:01<00:02, 1717.84it/s] 53%|█████▎    | 5285/10001 [00:01<00:02, 1911.86it/s] 56%|█████▌    | 5611/10001 [00:02<00:02, 2182.23it/s] 59%|█████▉    | 5944/10001 [00:02<00:01, 2432.37it/s] 63%|██████▎   | 6270/10001 [00:02<00:01, 2631.81it/s] 66%|██████▌   | 6619/10001 [00:02<00:01, 2841.29it/s] 70%|██████▉   | 6978/10001 [00:02<00:00, 3028.75it/s] 73%|███████▎  | 7314/10001 [00:02<00:00, 3120.71it/s] 77%|███████▋  | 7660/10001 [00:02<00:00, 3213.30it/s] 80%|███████▉  | 7994/10001 [00:02<00:00, 3248.45it/s] 83%|████████▎ | 8342/10001 [00:02<00:00, 3311.73it/s] 87%|████████▋ | 8680/10001 [00:02<00:00, 3320.63it/s] 90%|█████████ | 9017/10001 [00:03<00:00, 3301.12it/s] 94%|█████████▎| 9351/10001 [00:03<00:00, 3297.27it/s] 97%|█████████▋| 9683/10001 [00:03<00:00, 3280.25it/s]100%|██████████| 10001/10001 [00:03<00:00, 3010.04it/s]2019-02-28 22:40:21.252963: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.1 SSE4.2 AVX AVX2 FMA
+2019-02-28 22:40:21.428540: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1432] Found device 0 with properties: 
+name: Tesla K80 major: 3 minor: 7 memoryClockRate(GHz): 0.8235
+pciBusID: 0000:06:00.0
+totalMemory: 11.17GiB freeMemory: 11.10GiB
+2019-02-28 22:40:21.428581: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1511] Adding visible gpu devices: 0
+2019-02-28 22:40:21.748581: I tensorflow/core/common_runtime/gpu/gpu_device.cc:982] Device interconnect StreamExecutor with strength 1 edge matrix:
+2019-02-28 22:40:21.748625: I tensorflow/core/common_runtime/gpu/gpu_device.cc:988]      0 
+2019-02-28 22:40:21.748631: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1001] 0:   N 
+2019-02-28 22:40:21.748881: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1115] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 10758 MB memory) -> physical GPU (device: 0, name: Tesla K80, pci bus id: 0000:06:00.0, compute capability: 3.7)
+41
+[151, 439, 964, 1154, 1353, 1570, 1655, 2164, 2271, 2490, 2665, 3476, 3625, 3642, 3842, 4855, 4968, 4989, 5060, 5133, 5352, 5757, 5871, 5931, 6215, 6240, 6659, 6848, 6855, 6881, 6926, 7175, 7180, 7337, 7362, 7933, 7991, 8066, 8943, 9426, 10001]
+44
+[151, 439, 724, 964, 1154, 1353, 1570, 1655, 2164, 2490, 2665, 3476, 3625, 3642, 3842, 4568, 4855, 4968, 4989, 5060, 5133, 5352, 5757, 5871, 5931, 6215, 6240, 6659, 6848, 6855, 6881, 6926, 7175, 7180, 7337, 7362, 7933, 7991, 8066, 8208, 8943, 9426, 9603, 10001]
+9960
+9956
+(15932, 512, 512, 1)
+(3984, 512, 512, 1)
+(15932, 2)
+(3984, 2)
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #   
+=================================================================
+conv2d (Conv2D)              (None, 510, 510, 1)       10        
+_________________________________________________________________
+conv2d_1 (Conv2D)            (None, 2, 2, 64)          16581248  
+_________________________________________________________________
+flatten (Flatten)            (None, 256)               0         
+_________________________________________________________________
+dense (Dense)                (None, 2)                 514       
+_________________________________________________________________
+softmax (Softmax)            (None, 2)                 0         
+=================================================================
+Total params: 16,581,772
+Trainable params: 16,581,772
+Non-trainable params: 0
+_________________________________________________________________
+Train on 13542 samples, validate on 2390 samples
+Epoch 1/40
+ - 293s - loss: 0.7294 - categorical_accuracy: 0.4973 - val_loss: 0.8960 - val_categorical_accuracy: 0.4816
+Epoch 2/40
+ - 132s - loss: 0.7036 - categorical_accuracy: 0.4984 - val_loss: 0.6993 - val_categorical_accuracy: 0.4619
+Epoch 3/40
+ - 134s - loss: 0.7026 - categorical_accuracy: 0.5001 - val_loss: 0.8511 - val_categorical_accuracy: 0.5184
+Epoch 4/40
+ - 132s - loss: 0.6999 - categorical_accuracy: 0.5080 - val_loss: 0.8963 - val_categorical_accuracy: 0.5184
+Epoch 5/40
+ - 134s - loss: 0.6993 - categorical_accuracy: 0.5152 - val_loss: 0.7167 - val_categorical_accuracy: 0.4565
+Epoch 6/40
+ - 132s - loss: 0.6917 - categorical_accuracy: 0.5329 - val_loss: 0.7563 - val_categorical_accuracy: 0.2490
+Epoch 7/40
+ - 134s - loss: 0.6863 - categorical_accuracy: 0.5375 - val_loss: 0.7763 - val_categorical_accuracy: 0.2218
+Epoch 8/40
+ - 132s - loss: 0.6779 - categorical_accuracy: 0.5473 - val_loss: 0.8178 - val_categorical_accuracy: 0.1711
+Epoch 9/40
+ - 133s - loss: 0.6663 - categorical_accuracy: 0.5580 - val_loss: 0.7522 - val_categorical_accuracy: 0.3749
+Epoch 10/40
+ - 132s - loss: 0.6597 - categorical_accuracy: 0.5513 - val_loss: 1.1049 - val_categorical_accuracy: 0.3937
+Epoch 11/40
+ - 134s - loss: 0.6471 - categorical_accuracy: 0.5630 - val_loss: 1.0608 - val_categorical_accuracy: 0.4251
+Epoch 12/40
+ - 132s - loss: 0.6395 - categorical_accuracy: 0.5646 - val_loss: 0.9222 - val_categorical_accuracy: 0.2339
+Epoch 13/40
+ - 134s - loss: 0.6291 - categorical_accuracy: 0.5636 - val_loss: 1.1478 - val_categorical_accuracy: 0.1975
+Epoch 14/40
+ - 132s - loss: 0.6193 - categorical_accuracy: 0.5684 - val_loss: 1.2799 - val_categorical_accuracy: 0.1895
+Epoch 15/40
+ - 134s - loss: 0.6104 - categorical_accuracy: 0.5728 - val_loss: 1.3791 - val_categorical_accuracy: 0.3021
+Epoch 16/40
+ - 132s - loss: 0.6001 - categorical_accuracy: 0.5732 - val_loss: 1.1092 - val_categorical_accuracy: 0.1741
+Epoch 17/40
+ - 134s - loss: 0.5935 - categorical_accuracy: 0.5812 - val_loss: 1.5814 - val_categorical_accuracy: 0.2326
+Epoch 18/40
+ - 132s - loss: 0.6049 - categorical_accuracy: 0.5857 - val_loss: 1.4700 - val_categorical_accuracy: 0.2619
+Epoch 19/40
+ - 134s - loss: 0.5860 - categorical_accuracy: 0.5837 - val_loss: 1.7775 - val_categorical_accuracy: 0.2644
+Epoch 20/40
+ - 132s - loss: 0.5957 - categorical_accuracy: 0.5917 - val_loss: 1.7967 - val_categorical_accuracy: 0.2297
+Epoch 21/40
+ - 134s - loss: 0.5796 - categorical_accuracy: 0.5810 - val_loss: 1.8379 - val_categorical_accuracy: 0.2151
+Epoch 22/40
+ - 132s - loss: 0.5693 - categorical_accuracy: 0.5894 - val_loss: 1.9761 - val_categorical_accuracy: 0.1674
+Epoch 23/40
+ - 134s - loss: 0.5651 - categorical_accuracy: 0.5963 - val_loss: 1.3856 - val_categorical_accuracy: 0.1837
+Epoch 24/40
+ - 132s - loss: 0.5536 - categorical_accuracy: 0.6006 - val_loss: 1.7734 - val_categorical_accuracy: 0.3054
+Epoch 25/40
+ - 134s - loss: 0.5475 - categorical_accuracy: 0.5950 - val_loss: 2.1273 - val_categorical_accuracy: 0.2084
+Epoch 26/40
+ - 132s - loss: 0.5443 - categorical_accuracy: 0.6007 - val_loss: 1.8897 - val_categorical_accuracy: 0.2293
+Epoch 27/40
+ - 134s - loss: 0.5350 - categorical_accuracy: 0.6138 - val_loss: 1.7695 - val_categorical_accuracy: 0.1669
+Epoch 28/40
+ - 132s - loss: 0.5306 - categorical_accuracy: 0.6145 - val_loss: 2.6173 - val_categorical_accuracy: 0.2013
+Epoch 29/40
+ - 134s - loss: 0.5265 - categorical_accuracy: 0.6207 - val_loss: 2.6426 - val_categorical_accuracy: 0.1862
+Epoch 30/40
+ - 132s - loss: 0.5261 - categorical_accuracy: 0.6138 - val_loss: 2.2338 - val_categorical_accuracy: 0.1678
+Epoch 31/40
+ - 133s - loss: 0.5181 - categorical_accuracy: 0.6221 - val_loss: 2.6160 - val_categorical_accuracy: 0.1787
+Epoch 32/40
+ - 135s - loss: 0.5154 - categorical_accuracy: 0.6255 - val_loss: 2.4028 - val_categorical_accuracy: 0.2121
+Epoch 33/40
+ - 132s - loss: 0.5134 - categorical_accuracy: 0.6232 - val_loss: 2.4437 - val_categorical_accuracy: 0.1782
+Epoch 34/40
+ - 130s - loss: 0.5105 - categorical_accuracy: 0.6303 - val_loss: 3.0175 - val_categorical_accuracy: 0.1720
+Epoch 35/40
+ - 131s - loss: 0.5083 - categorical_accuracy: 0.6330 - val_loss: 2.6369 - val_categorical_accuracy: 0.2050
+Epoch 36/40
+ - 130s - loss: 0.5071 - categorical_accuracy: 0.6279 - val_loss: 2.9672 - val_categorical_accuracy: 0.1795
+Epoch 37/40
+ - 132s - loss: 0.5025 - categorical_accuracy: 0.6366 - val_loss: 2.2449 - val_categorical_accuracy: 0.1757
+Epoch 38/40
+ - 131s - loss: 0.5004 - categorical_accuracy: 0.6365 - val_loss: 3.1924 - val_categorical_accuracy: 0.1715
+Epoch 39/40
+ - 132s - loss: 0.4997 - categorical_accuracy: 0.6410 - val_loss: 2.7218 - val_categorical_accuracy: 0.2008
+Epoch 40/40
+ - 131s - loss: 0.4991 - categorical_accuracy: 0.6371 - val_loss: 3.4116 - val_categorical_accuracy: 0.1736
+
+Using TensorFlow backend.
+
+ Test accuracy: 0.1588855421686747
+  0%|          | 0/10001 [00:00<?, ?it/s]  1%|          | 114/10001 [00:00<00:08, 1137.27it/s]  4%|▍         | 401/10001 [00:00<00:06, 1388.44it/s]  7%|▋         | 732/10001 [00:00<00:05, 1680.60it/s] 11%|█         | 1087/10001 [00:00<00:04, 1995.06it/s] 15%|█▍        | 1452/10001 [00:00<00:03, 2308.90it/s] 18%|█▊        | 1804/10001 [00:00<00:03, 2573.56it/s] 22%|██▏       | 2163/10001 [00:00<00:02, 2811.54it/s] 25%|██▌       | 2526/10001 [00:00<00:02, 3014.88it/s] 29%|██▉       | 2909/10001 [00:00<00:02, 3219.74it/s] 33%|███▎      | 3254/10001 [00:01<00:02, 3284.37it/s] 36%|███▌      | 3609/10001 [00:01<00:01, 3357.35it/s] 40%|███▉      | 3979/10001 [00:01<00:01, 3451.08it/s] 43%|████▎     | 4336/10001 [00:01<00:01, 3484.06it/s] 47%|████▋     | 4702/10001 [00:01<00:01, 3533.77it/s] 51%|█████     | 5072/10001 [00:01<00:01, 3580.15it/s] 54%|█████▍    | 5437/10001 [00:01<00:01, 3600.55it/s] 58%|█████▊    | 5800/10001 [00:01<00:01, 3608.94it/s] 62%|██████▏   | 6169/10001 [00:01<00:01, 3632.69it/s] 65%|██████▌   | 6543/10001 [00:01<00:00, 3660.01it/s] 69%|██████▉   | 6910/10001 [00:02<00:00, 3658.16it/s] 73%|███████▎  | 7295/10001 [00:02<00:00, 3711.91it/s] 77%|███████▋  | 7676/10001 [00:02<00:00, 3738.17it/s] 81%|████████  | 8051/10001 [00:02<00:00, 3721.48it/s] 84%|████████▍ | 8443/10001 [00:02<00:00, 3778.17it/s] 88%|████████▊ | 8822/10001 [00:02<00:00, 3772.38it/s] 92%|█████████▏| 9200/10001 [00:02<00:00, 3767.58it/s] 96%|█████████▌| 9577/10001 [00:02<00:00, 3731.12it/s]100%|█████████▉| 9951/10001 [00:02<00:00, 3693.10it/s]100%|██████████| 10001/10001 [00:02<00:00, 3536.66it/s]
+  0%|          | 0/10001 [00:00<?, ?it/s]  2%|▏         | 245/10001 [00:00<00:03, 2449.90it/s]  6%|▌         | 582/10001 [00:00<00:03, 2668.18it/s]  9%|▉         | 920/10001 [00:00<00:03, 2848.07it/s] 13%|█▎        | 1269/10001 [00:00<00:02, 3012.79it/s] 16%|█▌        | 1611/10001 [00:00<00:02, 3123.55it/s] 20%|█▉        | 1978/10001 [00:00<00:02, 3269.32it/s] 23%|██▎       | 2338/10001 [00:00<00:02, 3361.54it/s] 27%|██▋       | 2701/10001 [00:00<00:02, 3435.64it/s] 31%|███       | 3056/10001 [00:00<00:02, 3467.43it/s] 34%|███▍      | 3396/10001 [00:01<00:02, 2957.23it/s] 37%|███▋      | 3700/10001 [00:01<00:03, 1897.83it/s] 39%|███▉      | 3944/10001 [00:01<00:04, 1445.38it/s] 41%|████▏     | 4143/10001 [00:01<00:04, 1306.54it/s] 43%|████▎     | 4314/10001 [00:01<00:04, 1169.44it/s] 45%|████▍     | 4462/10001 [00:02<00:04, 1125.91it/s] 46%|████▌     | 4597/10001 [00:02<00:05, 1079.27it/s] 47%|████▋     | 4723/10001 [00:02<00:04, 1127.42it/s] 48%|████▊     | 4848/10001 [00:02<00:04, 1077.34it/s] 50%|████▉     | 4992/10001 [00:02<00:04, 1165.30it/s] 53%|█████▎    | 5325/10001 [00:02<00:03, 1447.27it/s] 57%|█████▋    | 5652/10001 [00:02<00:02, 1737.32it/s] 60%|█████▉    | 5981/10001 [00:02<00:01, 2022.83it/s] 63%|██████▎   | 6322/10001 [00:02<00:01, 2303.60it/s] 67%|██████▋   | 6668/10001 [00:03<00:01, 2558.90it/s] 70%|███████   | 7013/10001 [00:03<00:01, 2773.73it/s] 74%|███████▎  | 7364/10001 [00:03<00:00, 2958.73it/s] 77%|███████▋  | 7714/10001 [00:03<00:00, 3102.18it/s] 81%|████████  | 8056/10001 [00:03<00:00, 3189.42it/s] 84%|████████▍ | 8404/10001 [00:03<00:00, 3269.60it/s] 87%|████████▋ | 8743/10001 [00:03<00:00, 3295.82it/s] 91%|█████████ | 9100/10001 [00:03<00:00, 3373.12it/s] 94%|█████████▍| 9444/10001 [00:03<00:00, 3367.52it/s] 98%|█████████▊| 9793/10001 [00:03<00:00, 3402.83it/s]100%|██████████| 10001/10001 [00:04<00:00, 2468.63it/s]2019-03-01 00:12:59.599595: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.1 SSE4.2 AVX AVX2 FMA
+2019-03-01 00:12:59.776508: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1432] Found device 0 with properties: 
+name: Tesla K80 major: 3 minor: 7 memoryClockRate(GHz): 0.8235
+pciBusID: 0000:06:00.0
+totalMemory: 11.17GiB freeMemory: 11.10GiB
+2019-03-01 00:12:59.776548: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1511] Adding visible gpu devices: 0
+2019-03-01 00:13:00.097824: I tensorflow/core/common_runtime/gpu/gpu_device.cc:982] Device interconnect StreamExecutor with strength 1 edge matrix:
+2019-03-01 00:13:00.097871: I tensorflow/core/common_runtime/gpu/gpu_device.cc:988]      0 
+2019-03-01 00:13:00.097877: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1001] 0:   N 
+2019-03-01 00:13:00.098132: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1115] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 10758 MB memory) -> physical GPU (device: 0, name: Tesla K80, pci bus id: 0000:06:00.0, compute capability: 3.7)
+41
+[151, 439, 964, 1154, 1353, 1570, 1655, 2164, 2271, 2490, 2665, 3476, 3625, 3642, 3842, 4855, 4968, 4989, 5060, 5133, 5352, 5757, 5871, 5931, 6215, 6240, 6659, 6848, 6855, 6881, 6926, 7175, 7180, 7337, 7362, 7933, 7991, 8066, 8943, 9426, 10001]
+44
+[151, 439, 964, 1154, 1353, 1570, 1655, 2164, 2490, 2665, 3476, 3625, 3642, 3842, 4136, 4855, 4968, 4989, 5049, 5060, 5133, 5352, 5757, 5871, 5931, 6215, 6240, 6659, 6848, 6855, 6881, 6926, 7175, 7180, 7337, 7746, 7933, 7991, 8066, 8943, 9125, 9426, 9712, 10001]
+9960
+9956
+(15932, 512, 512, 1)
+(3984, 512, 512, 1)
+(15932, 2)
+(3984, 2)
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #   
+=================================================================
+conv2d (Conv2D)              (None, 510, 510, 1)       10        
+_________________________________________________________________
+conv2d_1 (Conv2D)            (None, 2, 2, 64)          16581248  
+_________________________________________________________________
+flatten (Flatten)            (None, 256)               0         
+_________________________________________________________________
+dense (Dense)                (None, 2)                 514       
+_________________________________________________________________
+softmax (Softmax)            (None, 2)                 0         
+=================================================================
+Total params: 16,581,772
+Trainable params: 16,581,772
+Non-trainable params: 0
+_________________________________________________________________
+Train on 13542 samples, validate on 2390 samples
+Epoch 1/40
+ - 293s - loss: 0.7691 - categorical_accuracy: 0.4934 - val_loss: 0.7628 - val_categorical_accuracy: 0.4874
+Epoch 2/40
+ - 134s - loss: 0.7059 - categorical_accuracy: 0.4938 - val_loss: 0.7060 - val_categorical_accuracy: 0.4707
+Epoch 3/40
+ - 133s - loss: 0.7023 - categorical_accuracy: 0.4990 - val_loss: 0.7495 - val_categorical_accuracy: 0.4883
+Epoch 4/40
+ - 134s - loss: 0.7004 - categorical_accuracy: 0.5033 - val_loss: 0.7828 - val_categorical_accuracy: 0.4849
+Epoch 5/40
+ - 133s - loss: 0.6979 - categorical_accuracy: 0.5142 - val_loss: 0.7761 - val_categorical_accuracy: 0.4657
+Epoch 6/40
+ - 134s - loss: 0.6984 - categorical_accuracy: 0.5076 - val_loss: 0.7785 - val_categorical_accuracy: 0.4699
+Epoch 7/40
+ - 133s - loss: 0.6972 - categorical_accuracy: 0.5109 - val_loss: 0.7850 - val_categorical_accuracy: 0.4841
+Epoch 8/40
+ - 134s - loss: 0.6934 - categorical_accuracy: 0.5209 - val_loss: 0.8496 - val_categorical_accuracy: 0.4757
+Epoch 9/40
+ - 133s - loss: 0.6945 - categorical_accuracy: 0.5201 - val_loss: 0.7389 - val_categorical_accuracy: 0.3891
+Epoch 10/40
+ - 134s - loss: 0.6938 - categorical_accuracy: 0.5151 - val_loss: 0.8244 - val_categorical_accuracy: 0.4548
+Epoch 11/40
+ - 133s - loss: 0.6911 - categorical_accuracy: 0.5227 - val_loss: 0.7534 - val_categorical_accuracy: 0.4213
+Epoch 12/40
+ - 134s - loss: 0.6901 - categorical_accuracy: 0.5298 - val_loss: 0.8056 - val_categorical_accuracy: 0.4565
+Epoch 13/40
+ - 133s - loss: 0.6882 - categorical_accuracy: 0.5264 - val_loss: 0.8275 - val_categorical_accuracy: 0.4552
+Epoch 14/40
+ - 134s - loss: 0.6884 - categorical_accuracy: 0.5275 - val_loss: 0.7605 - val_categorical_accuracy: 0.3849
+Epoch 15/40
+ - 133s - loss: 0.6875 - categorical_accuracy: 0.5251 - val_loss: 0.8091 - val_categorical_accuracy: 0.4594
+Epoch 16/40
+ - 134s - loss: 0.6887 - categorical_accuracy: 0.5296 - val_loss: 0.7719 - val_categorical_accuracy: 0.3745
+Epoch 17/40
+ - 133s - loss: 0.6871 - categorical_accuracy: 0.5274 - val_loss: 0.7990 - val_categorical_accuracy: 0.4456
+Epoch 18/40
+ - 134s - loss: 0.6868 - categorical_accuracy: 0.5312 - val_loss: 0.7750 - val_categorical_accuracy: 0.3895
+Epoch 19/40
+ - 133s - loss: 0.6860 - categorical_accuracy: 0.5360 - val_loss: 0.8099 - val_categorical_accuracy: 0.4339
+Epoch 20/40
+ - 134s - loss: 0.6853 - categorical_accuracy: 0.5354 - val_loss: 0.8899 - val_categorical_accuracy: 0.4460
+Epoch 21/40
+ - 133s - loss: 0.6854 - categorical_accuracy: 0.5372 - val_loss: 0.7935 - val_categorical_accuracy: 0.4238
+Epoch 22/40
+ - 134s - loss: 0.6864 - categorical_accuracy: 0.5347 - val_loss: 0.8018 - val_categorical_accuracy: 0.4075
+Epoch 23/40
+ - 133s - loss: 0.6851 - categorical_accuracy: 0.5343 - val_loss: 0.7877 - val_categorical_accuracy: 0.3874
+Epoch 24/40
+ - 134s - loss: 0.6846 - categorical_accuracy: 0.5349 - val_loss: 0.7976 - val_categorical_accuracy: 0.4121
+Epoch 25/40
+ - 133s - loss: 0.6825 - categorical_accuracy: 0.5396 - val_loss: 0.8413 - val_categorical_accuracy: 0.4297
+Epoch 26/40
+ - 134s - loss: 0.6832 - categorical_accuracy: 0.5372 - val_loss: 0.8878 - val_categorical_accuracy: 0.4448
+Epoch 27/40
+ - 133s - loss: 0.6829 - categorical_accuracy: 0.5351 - val_loss: 0.8154 - val_categorical_accuracy: 0.3833
+Epoch 28/40
+ - 134s - loss: 0.6811 - categorical_accuracy: 0.5405 - val_loss: 0.8045 - val_categorical_accuracy: 0.3644
+Epoch 29/40
+ - 133s - loss: 0.6826 - categorical_accuracy: 0.5371 - val_loss: 0.8329 - val_categorical_accuracy: 0.3967
+Epoch 30/40
+ - 134s - loss: 0.6833 - categorical_accuracy: 0.5362 - val_loss: 0.8486 - val_categorical_accuracy: 0.4385
+Epoch 31/40
+ - 133s - loss: 0.6815 - categorical_accuracy: 0.5397 - val_loss: 0.8427 - val_categorical_accuracy: 0.4100
+Epoch 32/40
+ - 134s - loss: 0.6803 - categorical_accuracy: 0.5380 - val_loss: 0.8227 - val_categorical_accuracy: 0.3531
+Epoch 33/40
+ - 135s - loss: 0.6803 - categorical_accuracy: 0.5416 - val_loss: 0.8706 - val_categorical_accuracy: 0.4130
+Epoch 34/40
+ - 134s - loss: 0.6797 - categorical_accuracy: 0.5410 - val_loss: 0.8558 - val_categorical_accuracy: 0.4238
+Epoch 35/40
+ - 130s - loss: 0.6800 - categorical_accuracy: 0.5369 - val_loss: 0.8208 - val_categorical_accuracy: 0.3582
+Epoch 36/40
+ - 131s - loss: 0.6784 - categorical_accuracy: 0.5479 - val_loss: 0.8397 - val_categorical_accuracy: 0.3682
+Epoch 37/40
+ - 130s - loss: 0.6764 - categorical_accuracy: 0.5479 - val_loss: 0.8540 - val_categorical_accuracy: 0.3494
+Epoch 38/40
+ - 132s - loss: 0.6770 - categorical_accuracy: 0.5479 - val_loss: 0.8478 - val_categorical_accuracy: 0.3808
+Epoch 39/40
+ - 131s - loss: 0.6784 - categorical_accuracy: 0.5431 - val_loss: 0.8708 - val_categorical_accuracy: 0.3540
+Epoch 40/40
+ - 132s - loss: 0.6750 - categorical_accuracy: 0.5512 - val_loss: 0.9355 - val_categorical_accuracy: 0.4234
+
+Using TensorFlow backend.
+
+ Test accuracy: 0.41892570281124497
