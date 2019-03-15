@@ -130,6 +130,7 @@ for image in x:
     resized = np.array(Image.fromarray(image).resize((256, 256)))
     x_resized.append(resized)
 
+x = x_resized
 
 # normalize
 x = x.astype("float32") / 255
