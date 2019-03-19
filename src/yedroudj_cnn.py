@@ -181,6 +181,8 @@ model = tf.keras.Sequential()
 # (don't know if below is needed, it's sort of preprocessing)
 #model.add(tf.keras.layers.ZeroPadding2D(padding=(2,2)))
 model.add(tf.keras.layers.Conv2D(filters=30, kernel_size=5, padding='same', activation='tanh', input_shape=(256,256,1)))
+print(model.layers[0].get_weights().shape)
+print(filter_weights.hp_filters.shape)
 model.layers[0].set_weights(filter_weights.hp_filters)
 model.layers[0].trainable = False
 
