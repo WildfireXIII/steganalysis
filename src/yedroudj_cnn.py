@@ -7,6 +7,8 @@ from sklearn.model_selection import train_test_split
 from PIL import Image
 import random
 
+import filter_weights
+
 import sys
 
 # cmdline args: 1 = cover path 2 = stego pat 3 = % data 4 = # epochs
@@ -133,11 +135,11 @@ for image in x:
 x = np.asarray(x_resized)
 
 # normalize
-x = x.astype("float32") / 255
-mean = np.mean(x)
-std = np.std(x)
-x -= mean
-x *= (1/std)
+#x = x.astype("float32") / 255
+#mean = np.mean(x)
+#std = np.std(x)
+#x -= mean
+#x *= (1/std)
 
 x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=.2, random_state=random.randint(1,100))
 
@@ -179,6 +181,8 @@ model = tf.keras.Sequential()
 # (don't know if below is needed, it's sort of preprocessing)
 #model.add(tf.keras.layers.ZeroPadding2D(padding=(2,2)))
 model.add(tf.keras.layers.Conv2D(filters=30, kernel_size=5, padding='same', activation='tanh', input_shape=(256,256,1)))
+model.layers[0].set_weights(filter_weights.hp_filters)
+model.layers[0].trainable = False
 
 
 
@@ -188,42 +192,42 @@ model.add(tf.keras.layers.Conv2D(filters=30, kernel_size=5, padding='same', acti
 
 
 model.add(tf.keras.layers.ZeroPadding2D(padding=(2,2)))
-model.add(tf.keras.layers.Conv2D(filters=30, kernel_size=5, padding='valid', activation='linear'))
+model.add(tf.keras.layers.Conv2D(filters=30, kernel_size=5, padding='valid', activation='linear', kernel_initializer='glorot_normal'))
 model.add(tf.keras.layers.Lambda(lambda x: tf.keras.backend.abs(x)))
 model.add(tf.keras.layers.BatchNormalization())
 model.add(tf.keras.layers.Lambda(lambda x: tf.clip_by_value(x, -3, 3)))
 
 
 model.add(tf.keras.layers.ZeroPadding2D(padding=(2,2)))
-model.add(tf.keras.layers.Conv2D(filters=30, kernel_size=5, padding='valid', activation='linear'))
+model.add(tf.keras.layers.Conv2D(filters=30, kernel_size=5, padding='valid', activation='linear', kernel_initializer='glorot_normal'))
 model.add(tf.keras.layers.BatchNormalization())
 model.add(tf.keras.layers.Lambda(lambda x: tf.clip_by_value(x, -2, 2)))
 model.add(tf.keras.layers.AveragePooling2D(pool_size=(5,5), strides=2, padding="same"))
 
 
 model.add(tf.keras.layers.ZeroPadding2D(padding=(1,1)))
-model.add(tf.keras.layers.Conv2D(filters=32, kernel_size=3, padding='valid', activation='linear'))
+model.add(tf.keras.layers.Conv2D(filters=32, kernel_size=3, padding='valid', activation='linear', kernel_initializer='glorot_normal'))
 model.add(tf.keras.layers.BatchNormalization())
 model.add(tf.keras.layers.ReLU())
 model.add(tf.keras.layers.AveragePooling2D(pool_size=(5,5), strides=2, padding="same"))
 
 model.add(tf.keras.layers.ZeroPadding2D(padding=(1,1)))
-model.add(tf.keras.layers.Conv2D(filters=64, kernel_size=3, padding='valid', activation='linear'))
+model.add(tf.keras.layers.Conv2D(filters=64, kernel_size=3, padding='valid', activation='linear', kernel_initializer='glorot_normal'))
 model.add(tf.keras.layers.BatchNormalization())
 model.add(tf.keras.layers.ReLU())
 model.add(tf.keras.layers.AveragePooling2D(pool_size=(5,5), strides=2, padding="same"))
 
 
 model.add(tf.keras.layers.ZeroPadding2D(padding=(1,1)))
-model.add(tf.keras.layers.Conv2D(filters=128, kernel_size=3, padding='valid', activation='linear'))
+model.add(tf.keras.layers.Conv2D(filters=128, kernel_size=3, padding='valid', activation='linear', kernel_initializer='glorot_normal'))
 model.add(tf.keras.layers.BatchNormalization())
 model.add(tf.keras.layers.ReLU())
 model.add(tf.keras.layers.GlobalAveragePooling2D())
 
 
 model.add(tf.keras.layers.Flatten()) # note that in the paper they use reshape to 64x4 instead of flattening
-model.add(tf.keras.layers.Dense(256, activation='relu'))
-model.add(tf.keras.layers.Dense(1024, activation='relu'))
+model.add(tf.keras.layers.Dense(256, activation='relu', kernel_initializer='glorot_normal'))
+model.add(tf.keras.layers.Dense(1024, activation='relu', kernel_initializer='glorot_normal'))
 model.add(tf.keras.layers.Dense(2))
 model.add(tf.keras.layers.Softmax())
 
@@ -248,7 +252,7 @@ model.summary()
 def step_decay(epoch):
     initial_lrate = .01
     drop = .1
-    epochs_drop = 40/10
+    epochs_drop = int(sys.argv[4])/10
     lrate = initial_lrate * math.pow(drop, math.floor((1+epoch)/epochs_drop))
     return lrate
 
@@ -262,7 +266,7 @@ from keras.callbacks import ModelCheckpoint
 
 checkpointer = ModelCheckpoint(filepath='model.weights.best', verbose=1, save_best_only=True)
 
-model.fit(x_train, y_train, batch_size=20, epochs=int(sys.argv[4]), shuffle=True, validation_split=.15, verbose=2, callbacks=[lrate])
+model.fit(x_train, y_train, batch_size=16, epochs=int(sys.argv[4]), shuffle=True, validation_split=.15, verbose=2, callbacks=[lrate])
 
 
 #model.load_weights('model.weights.best')
