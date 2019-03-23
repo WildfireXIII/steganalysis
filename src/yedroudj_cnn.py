@@ -175,6 +175,10 @@ print(y_train.shape)
 print(y_test.shape)
 
 
+weight_decay = .0001
+reg = tf.keras.regularizers.l2(weight_decay)
+
+
 model = tf.keras.Sequential()
 
 
@@ -194,42 +198,42 @@ model.layers[0].trainable = False
 
 
 model.add(tf.keras.layers.ZeroPadding2D(padding=(2,2)))
-model.add(tf.keras.layers.Conv2D(filters=30, kernel_size=5, padding='valid', activation='linear', kernel_initializer='glorot_normal'))
+model.add(tf.keras.layers.Conv2D(filters=30, kernel_size=5, padding='valid', activation='linear', kernel_initializer='glorot_normal', kernel_regularizer=reg, bias_regularizer=reg))
 model.add(tf.keras.layers.Lambda(lambda x: tf.keras.backend.abs(x)))
 model.add(tf.keras.layers.BatchNormalization())
 model.add(tf.keras.layers.Lambda(lambda x: tf.clip_by_value(x, -3, 3)))
 
 
 model.add(tf.keras.layers.ZeroPadding2D(padding=(2,2)))
-model.add(tf.keras.layers.Conv2D(filters=30, kernel_size=5, padding='valid', activation='linear', kernel_initializer='glorot_normal'))
+model.add(tf.keras.layers.Conv2D(filters=30, kernel_size=5, padding='valid', activation='linear', kernel_initializer='glorot_normal', kernel_regularizer=reg, bias_regularizer=reg))
 model.add(tf.keras.layers.BatchNormalization())
 model.add(tf.keras.layers.Lambda(lambda x: tf.clip_by_value(x, -2, 2)))
 model.add(tf.keras.layers.AveragePooling2D(pool_size=(5,5), strides=2, padding="same"))
 
 
 model.add(tf.keras.layers.ZeroPadding2D(padding=(1,1)))
-model.add(tf.keras.layers.Conv2D(filters=32, kernel_size=3, padding='valid', activation='linear', kernel_initializer='glorot_normal'))
+model.add(tf.keras.layers.Conv2D(filters=32, kernel_size=3, padding='valid', activation='linear', kernel_initializer='glorot_normal', kernel_regularizer=reg, bias_regularizer=reg))
 model.add(tf.keras.layers.BatchNormalization())
 model.add(tf.keras.layers.ReLU())
 model.add(tf.keras.layers.AveragePooling2D(pool_size=(5,5), strides=2, padding="same"))
 
 model.add(tf.keras.layers.ZeroPadding2D(padding=(1,1)))
-model.add(tf.keras.layers.Conv2D(filters=64, kernel_size=3, padding='valid', activation='linear', kernel_initializer='glorot_normal'))
+model.add(tf.keras.layers.Conv2D(filters=64, kernel_size=3, padding='valid', activation='linear', kernel_initializer='glorot_normal', kernel_regularizer=reg, bias_regularizer=reg))
 model.add(tf.keras.layers.BatchNormalization())
 model.add(tf.keras.layers.ReLU())
 model.add(tf.keras.layers.AveragePooling2D(pool_size=(5,5), strides=2, padding="same"))
 
 
 model.add(tf.keras.layers.ZeroPadding2D(padding=(1,1)))
-model.add(tf.keras.layers.Conv2D(filters=128, kernel_size=3, padding='valid', activation='linear', kernel_initializer='glorot_normal'))
+model.add(tf.keras.layers.Conv2D(filters=128, kernel_size=3, padding='valid', activation='linear', kernel_initializer='glorot_normal', kernel_regularizer=reg, bias_regularizer=reg))
 model.add(tf.keras.layers.BatchNormalization())
 model.add(tf.keras.layers.ReLU())
 model.add(tf.keras.layers.GlobalAveragePooling2D())
 
 
 model.add(tf.keras.layers.Flatten()) # note that in the paper they use reshape to 64x4 instead of flattening
-model.add(tf.keras.layers.Dense(256, activation='relu', kernel_initializer='glorot_normal'))
-model.add(tf.keras.layers.Dense(1024, activation='relu', kernel_initializer='glorot_normal'))
+model.add(tf.keras.layers.Dense(256, activation='relu', kernel_initializer='glorot_normal', kernel_regularizer=reg, bias_regularizer=reg))
+model.add(tf.keras.layers.Dense(1024, activation='relu', kernel_initializer='glorot_normal', kernel_regularizer=reg, bias_regularizer=reg))
 model.add(tf.keras.layers.Dense(2))
 model.add(tf.keras.layers.Softmax())
 
@@ -253,7 +257,7 @@ model.summary()
 # https://towardsdatascience.com/learning-rate-schedules-and-adaptive-learning-rate-methods-for-deep-learning-2c8f433990d1
 def step_decay(epoch):
     initial_lrate = .01
-    drop = .1
+    drop = .9
     epochs_drop = int(sys.argv[4])/10
     lrate = initial_lrate * math.pow(drop, math.floor((1+epoch)/epochs_drop))
     return lrate
@@ -261,7 +265,7 @@ def step_decay(epoch):
 lrate = tf.keras.callbacks.LearningRateScheduler(step_decay)
 
 # compile model
-sgd = tf.keras.optimizers.SGD(lr=.01, decay=1e-5, momentum=.95)
+sgd = tf.keras.optimizers.SGD(lr=.01, decay=0.0, momentum=.95)
 model.compile(loss='categorical_crossentropy', optimizer=sgd, metrics=['categorical_accuracy'])
 
 from keras.callbacks import ModelCheckpoint
