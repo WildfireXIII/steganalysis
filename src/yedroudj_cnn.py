@@ -184,7 +184,7 @@ model = tf.keras.Sequential()
 
 # (don't know if below is needed, it's sort of preprocessing)
 #model.add(tf.keras.layers.ZeroPadding2D(padding=(2,2)))
-model.add(tf.keras.layers.Conv2D(filters=30, kernel_size=5, padding='same', activation='tanh', input_shape=(256,256,1)))
+model.add(tf.keras.layers.Conv2D(filters=30, kernel_size=5, padding='same', activation='linear', input_shape=(256,256,1), use_bias=False))
 model.layers[0].set_weights(filter_weights.hp_filters)
 model.layers[0].trainable = False
 
@@ -196,35 +196,35 @@ model.layers[0].trainable = False
 
 
 model.add(tf.keras.layers.ZeroPadding2D(padding=(2,2)))
-model.add(tf.keras.layers.Conv2D(filters=30, kernel_size=5, padding='valid', activation='linear', kernel_initializer='glorot_normal', kernel_regularizer=tf.keras.regularizers.l2(weight_decay)))
+model.add(tf.keras.layers.Conv2D(filters=30, kernel_size=5, padding='valid', activation='linear', kernel_initializer='glorot_normal', kernel_regularizer=tf.keras.regularizers.l2(weight_decay), use_bias=False))
 model.add(tf.keras.layers.Lambda(lambda x: tf.keras.backend.abs(x)))
-model.add(tf.keras.layers.BatchNormalization())
+model.add(tf.keras.layers.BatchNormalization(momentum=.95))
 model.add(tf.keras.layers.Lambda(lambda x: tf.clip_by_value(x, -3, 3)))
 
 
 model.add(tf.keras.layers.ZeroPadding2D(padding=(2,2)))
-model.add(tf.keras.layers.Conv2D(filters=30, kernel_size=5, padding='valid', activation='linear', kernel_initializer='glorot_normal', kernel_regularizer=tf.keras.regularizers.l2(weight_decay)))
-model.add(tf.keras.layers.BatchNormalization())
+model.add(tf.keras.layers.Conv2D(filters=30, kernel_size=5, padding='valid', activation='linear', kernel_initializer='glorot_normal', kernel_regularizer=tf.keras.regularizers.l2(weight_decay), use_bias=False))
+model.add(tf.keras.layers.BatchNormalization(momentum=.95))
 model.add(tf.keras.layers.Lambda(lambda x: tf.clip_by_value(x, -2, 2)))
 model.add(tf.keras.layers.AveragePooling2D(pool_size=(5,5), strides=2, padding="same"))
 
 
 model.add(tf.keras.layers.ZeroPadding2D(padding=(1,1)))
-model.add(tf.keras.layers.Conv2D(filters=32, kernel_size=3, padding='valid', activation='linear', kernel_initializer='glorot_normal', kernel_regularizer=tf.keras.regularizers.l2(weight_decay)))
-model.add(tf.keras.layers.BatchNormalization())
+model.add(tf.keras.layers.Conv2D(filters=32, kernel_size=3, padding='valid', activation='linear', kernel_initializer='glorot_normal', kernel_regularizer=tf.keras.regularizers.l2(weight_decay), use_bias=False))
+model.add(tf.keras.layers.BatchNormalization(momentum=.95))
 model.add(tf.keras.layers.ReLU())
 model.add(tf.keras.layers.AveragePooling2D(pool_size=(5,5), strides=2, padding="same"))
 
 model.add(tf.keras.layers.ZeroPadding2D(padding=(1,1)))
-model.add(tf.keras.layers.Conv2D(filters=64, kernel_size=3, padding='valid', activation='linear', kernel_initializer='glorot_normal', kernel_regularizer=tf.keras.regularizers.l2(weight_decay)))
-model.add(tf.keras.layers.BatchNormalization())
+model.add(tf.keras.layers.Conv2D(filters=64, kernel_size=3, padding='valid', activation='linear', kernel_initializer='glorot_normal', kernel_regularizer=tf.keras.regularizers.l2(weight_decay), use_bias=False))
+model.add(tf.keras.layers.BatchNormalization(momentum=.95))
 model.add(tf.keras.layers.ReLU())
 model.add(tf.keras.layers.AveragePooling2D(pool_size=(5,5), strides=2, padding="same"))
 
 
 model.add(tf.keras.layers.ZeroPadding2D(padding=(1,1)))
-model.add(tf.keras.layers.Conv2D(filters=128, kernel_size=3, padding='valid', activation='linear', kernel_initializer='glorot_normal', kernel_regularizer=tf.keras.regularizers.l2(weight_decay)))
-model.add(tf.keras.layers.BatchNormalization())
+model.add(tf.keras.layers.Conv2D(filters=128, kernel_size=3, padding='valid', activation='linear', kernel_initializer='glorot_normal', kernel_regularizer=tf.keras.regularizers.l2(weight_decay), use_bias=False))
+model.add(tf.keras.layers.BatchNormalization(momentum=.95))
 model.add(tf.keras.layers.ReLU())
 model.add(tf.keras.layers.GlobalAveragePooling2D())
 
