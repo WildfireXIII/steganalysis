@@ -96,8 +96,10 @@ failed = list(set(failed))
 # remove all failed images
 
 for i in range(0, len(failed)):
-    del stego_images[i]
-    del cover_images[i]
+    #del stego_images[i]
+    #del cover_images[i]
+    stego_images.remove(failed[i])
+    cover_images.remove(failed[i])
 
 #for i in range(0, len(stego_images)):
 #    if stego_images[i] is None or cover_images[i] is None:
