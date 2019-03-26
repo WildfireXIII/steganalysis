@@ -185,8 +185,6 @@ model = tf.keras.Sequential()
 # (don't know if below is needed, it's sort of preprocessing)
 #model.add(tf.keras.layers.ZeroPadding2D(padding=(2,2)))
 model.add(tf.keras.layers.Conv2D(filters=30, kernel_size=5, padding='same', activation='tanh', input_shape=(256,256,1)))
-print(model.layers[0].get_weights())
-#print(filter_weights.hp_filters)
 model.layers[0].set_weights(filter_weights.hp_filters)
 model.layers[0].trainable = False
 
@@ -198,42 +196,42 @@ model.layers[0].trainable = False
 
 
 model.add(tf.keras.layers.ZeroPadding2D(padding=(2,2)))
-model.add(tf.keras.layers.Conv2D(filters=30, kernel_size=5, padding='valid', activation='linear', kernel_initializer='glorot_normal', kernel_regularizer=reg))
+model.add(tf.keras.layers.Conv2D(filters=30, kernel_size=5, padding='valid', activation='linear', kernel_initializer='glorot_normal', kernel_regularizer=tf.keras.regularizers.l2(weight_decay)))
 model.add(tf.keras.layers.Lambda(lambda x: tf.keras.backend.abs(x)))
 model.add(tf.keras.layers.BatchNormalization())
 model.add(tf.keras.layers.Lambda(lambda x: tf.clip_by_value(x, -3, 3)))
 
 
 model.add(tf.keras.layers.ZeroPadding2D(padding=(2,2)))
-model.add(tf.keras.layers.Conv2D(filters=30, kernel_size=5, padding='valid', activation='linear', kernel_initializer='glorot_normal', kernel_regularizer=reg))
+model.add(tf.keras.layers.Conv2D(filters=30, kernel_size=5, padding='valid', activation='linear', kernel_initializer='glorot_normal', kernel_regularizer=tf.keras.regularizers.l2(weight_decay)))
 model.add(tf.keras.layers.BatchNormalization())
 model.add(tf.keras.layers.Lambda(lambda x: tf.clip_by_value(x, -2, 2)))
 model.add(tf.keras.layers.AveragePooling2D(pool_size=(5,5), strides=2, padding="same"))
 
 
 model.add(tf.keras.layers.ZeroPadding2D(padding=(1,1)))
-model.add(tf.keras.layers.Conv2D(filters=32, kernel_size=3, padding='valid', activation='linear', kernel_initializer='glorot_normal', kernel_regularizer=reg))
+model.add(tf.keras.layers.Conv2D(filters=32, kernel_size=3, padding='valid', activation='linear', kernel_initializer='glorot_normal', kernel_regularizer=tf.keras.regularizers.l2(weight_decay)))
 model.add(tf.keras.layers.BatchNormalization())
 model.add(tf.keras.layers.ReLU())
 model.add(tf.keras.layers.AveragePooling2D(pool_size=(5,5), strides=2, padding="same"))
 
 model.add(tf.keras.layers.ZeroPadding2D(padding=(1,1)))
-model.add(tf.keras.layers.Conv2D(filters=64, kernel_size=3, padding='valid', activation='linear', kernel_initializer='glorot_normal', kernel_regularizer=reg))
+model.add(tf.keras.layers.Conv2D(filters=64, kernel_size=3, padding='valid', activation='linear', kernel_initializer='glorot_normal', kernel_regularizer=tf.keras.regularizers.l2(weight_decay)))
 model.add(tf.keras.layers.BatchNormalization())
 model.add(tf.keras.layers.ReLU())
 model.add(tf.keras.layers.AveragePooling2D(pool_size=(5,5), strides=2, padding="same"))
 
 
 model.add(tf.keras.layers.ZeroPadding2D(padding=(1,1)))
-model.add(tf.keras.layers.Conv2D(filters=128, kernel_size=3, padding='valid', activation='linear', kernel_initializer='glorot_normal', kernel_regularizer=reg))
+model.add(tf.keras.layers.Conv2D(filters=128, kernel_size=3, padding='valid', activation='linear', kernel_initializer='glorot_normal', kernel_regularizer=tf.keras.regularizers.l2(weight_decay)))
 model.add(tf.keras.layers.BatchNormalization())
 model.add(tf.keras.layers.ReLU())
 model.add(tf.keras.layers.GlobalAveragePooling2D())
 
 
 model.add(tf.keras.layers.Flatten()) # note that in the paper they use reshape to 64x4 instead of flattening
-model.add(tf.keras.layers.Dense(256, activation='relu', kernel_initializer='glorot_normal', kernel_regularizer=reg))
-model.add(tf.keras.layers.Dense(1024, activation='relu', kernel_initializer='glorot_normal', kernel_regularizer=reg))
+model.add(tf.keras.layers.Dense(256, activation='relu', kernel_initializer='glorot_normal', kernel_regularizer=tf.keras.regularizers.l2(weight_decay)))
+model.add(tf.keras.layers.Dense(1024, activation='relu', kernel_initializer='glorot_normal', kernel_regularizer=tf.keras.regularizers.l2(weight_decay)))
 model.add(tf.keras.layers.Dense(2))
 model.add(tf.keras.layers.Softmax())
 
@@ -258,7 +256,7 @@ model.summary()
 def step_decay(epoch):
     initial_lrate = .01
     drop = .9
-    epochs_drop = int(sys.argv[4])/10
+    epochs_drop = 900/10 # in paper, they used 900 as maximum epochs, and we should decay after each 10% of the total number of epochs
     lrate = initial_lrate * math.pow(drop, math.floor((1+epoch)/epochs_drop))
     return lrate
 
