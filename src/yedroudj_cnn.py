@@ -88,7 +88,9 @@ print(failed_stego)
 
 failed_cover.extend(failed_stego)
 failed = failed_cover
-failed = list(set(failed.sort().reverse()))
+failed.sort()
+failed.reverse()
+failed = list(set(failed))
 
 
 # remove all failed images
