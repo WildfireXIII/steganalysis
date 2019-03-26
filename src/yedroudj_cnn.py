@@ -63,7 +63,7 @@ failed_stego = []
 
 percentage = float(sys.argv[3])
 
-for i in range(1, int(10001*percentage)+1):
+for i in range(1, int(10000*percentage+1)):
     try:
         image = read_pgm(cover_images_path + "/" + str(i) + ".pgm")
         cover_images.append(image)
@@ -71,7 +71,7 @@ for i in range(1, int(10001*percentage)+1):
         failed_cover.append(i)
         cover_images.append(None)
         
-for i in range(1, int(10001*percentage)+1):
+for i in range(1, int(10000*percentage+1)):
     try:
         image = read_pgm(stego_images_path + "/" + str(i) + ".pgm")
         stego_images.append(image)
@@ -88,9 +88,9 @@ print(failed_stego)
 
 failed_cover.extend(failed_stego)
 failed = failed_cover
+failed = list(set(failed))
 failed.sort()
 failed.reverse()
-failed = list(set(failed))
 print(failed)
 
 
