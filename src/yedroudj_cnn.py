@@ -189,6 +189,7 @@ model.layers[0].set_weights(filter_weights.hp_filters)
 model.layers[0].trainable = False
 
 
+# NOTE: that scale layer is incorporated into batch norm: https://github.com/flyyufelix/DenseNet-Keras/issues/5
 
 
 #model.add(tf.keras.layers.MaxPooling2D(pool_size=8))
@@ -252,6 +253,12 @@ model.add(tf.keras.layers.Softmax())
 # Take a look at the model summary
 model.summary()
 
+# https://stackoverflow.com/questions/48198031/keras-add-variables-to-progress-bar/48206009#48206009
+def get_lr_metric(optimizer):
+    def lr(y_true, y_pred):
+        return optimizer.lr
+    return lr
+
 # https://towardsdatascience.com/learning-rate-schedules-and-adaptive-learning-rate-methods-for-deep-learning-2c8f433990d1
 def step_decay(epoch):
     initial_lrate = .01
@@ -264,7 +271,8 @@ lrate = tf.keras.callbacks.LearningRateScheduler(step_decay)
 
 # compile model
 sgd = tf.keras.optimizers.SGD(lr=.01, decay=0.0, momentum=.95)
-model.compile(loss='categorical_crossentropy', optimizer=sgd, metrics=['categorical_accuracy'])
+lr_metric = get_lr_metric(sgd)
+model.compile(loss='categorical_crossentropy', optimizer=sgd, metrics=['categorical_accuracy', lr_metric])
 
 from keras.callbacks import ModelCheckpoint
 
