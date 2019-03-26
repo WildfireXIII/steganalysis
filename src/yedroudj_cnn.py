@@ -86,7 +86,8 @@ print(failed_cover)
 print(len(failed_stego))
 print(failed_stego)
 
-failed = failed_cover.extend(failed_stego)
+failed_cover.extend(failed_stego)
+failed = failed_cover
 failed = list(set(failed.sort().reverse()))
 
 
