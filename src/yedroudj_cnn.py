@@ -86,15 +86,21 @@ print(failed_cover)
 print(len(failed_stego))
 print(failed_stego)
 
+failed = failed_cover.extend(failed_stego)
+failed = list(set(failed.sort().reverse()))
+
 
 # remove all failed images
 
-count = len(stego_images)
-for i in range(count, 0, -1):
-    if stego_images[i] is None or cover_images[i] is None:
-        del stego_images[i]
-        del cover_images[i]
+for i in range(0, len(failed)):
+    del stego_images[i]
+    del cover_images[i]
 
+#for i in range(0, len(stego_images)):
+#    if stego_images[i] is None or cover_images[i] is None:
+#        del stego_images[i]
+#        del cover_images[i]
+#
 
 # get same number in both sets
 # TODO: these are not removing the same images in both
