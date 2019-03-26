@@ -104,8 +104,8 @@ for i in range(0, len(failed)):
     stego_images.pop(index)
     cover_images.pop(index)
     
-print(stego_images)
-print(cover_images)
+#print(stego_images)
+#print(cover_images)
 
 #for i in range(0, len(stego_images)):
 #    if stego_images[i] is None or cover_images[i] is None:
