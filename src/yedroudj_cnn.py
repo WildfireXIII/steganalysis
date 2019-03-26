@@ -68,7 +68,7 @@ for i in range(1, int(10000*percentage+1)):
         image = read_pgm(cover_images_path + "/" + str(i) + ".pgm")
         cover_images.append(image)
     except:
-        failed_cover.append(i)
+        failed_cover.append(i-1)
         cover_images.append(None)
         
 for i in range(1, int(10000*percentage+1)):
@@ -76,7 +76,7 @@ for i in range(1, int(10000*percentage+1)):
         image = read_pgm(stego_images_path + "/" + str(i) + ".pgm")
         stego_images.append(image)
     except:
-        failed_stego.append(i)
+        failed_stego.append(i-1)
         stego_images.append(None)
 
 
