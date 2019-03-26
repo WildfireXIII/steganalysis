@@ -37,8 +37,8 @@ def read_pgm(filename, byteorder='>'):
                             offset=len(header)
                             ).reshape((int(height), int(width)))
 
-def log_loss(y_true, y_pred):
-    return tf.losses.log_loss(y_true, y_pred)
+#def log_loss(y_true, y_pred):
+    #return tf.losses.log_loss(y_true, y_pred)
 
 #cover_images_path = "../data/raw/boss/cover"
 #hugo_images_path = "../data/raw/boss/stego"
@@ -69,6 +69,7 @@ for i in range(1, int(10001*percentage)+1):
         cover_images.append(image)
     except:
         failed_cover.append(i)
+        cover_images.append(None)
         
 for i in range(1, int(10001*percentage)+1):
     try:
@@ -76,6 +77,7 @@ for i in range(1, int(10001*percentage)+1):
         stego_images.append(image)
     except:
         failed_stego.append(i)
+        stego_images.append(None)
 
 
 
@@ -85,10 +87,18 @@ print(len(failed_stego))
 print(failed_stego)
 
 
+# remove all failed images
+
+for i in range(0, len(stego_images)):
+    if stego_images[i] == None or cover_images[i] == None:
+        del stego_images[i]
+        del cover_images[i]
+
+
 # get same number in both sets
 # TODO: these are not removing the same images in both
 
-stego_images.pop(0)
+#stego_images.pop(0)
 print(len(cover_images))
 print(len(stego_images))
 
@@ -104,13 +114,22 @@ print(len(stego_images))
 
 # make training data
 
-# add cover
-x = cover_images
-y = [(0,1)]*len(cover_images)
+## add cover
+#x = cover_images
+#y = [(0,1)]*len(cover_images)
+#
+## add stego
+#x.extend(stego_images)
+#y.extend([(1,0)]*len(stego_images))
 
-# add stego
-x.extend(stego_images)
-y.extend([(1,0)]*len(stego_images))
+x = []
+y = []
+
+for i in range(0, len(cover_images)):
+    x.append(cover_images[i])
+    y.append((0,1))
+    x.append(stego_images[i])
+    y.append((1,0))
 
 
 #def randomize(a, b):
@@ -141,7 +160,13 @@ x = np.asarray(x_resized)
 #x -= mean
 #x *= (1/std)
 
-x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=.2, random_state=random.randint(1,100))
+#x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=.2, random_state=random.randint(1,100))
+
+test_index = int(len(x) * .8)
+x_train = x[:test_index]
+y_train = y[:test_index]
+x_test = x[test_index:]
+y_test = y[test_index:]
 
 
 #x, y = randomize(x, y)
@@ -176,7 +201,7 @@ print(y_test.shape)
 
 
 weight_decay = .0001
-reg = tf.keras.regularizers.l2(weight_decay)
+#reg = tf.keras.regularizers.l2(weight_decay)
 
 
 model = tf.keras.Sequential()
@@ -197,42 +222,42 @@ model.layers[0].trainable = False
 
 
 model.add(tf.keras.layers.ZeroPadding2D(padding=(2,2)))
-model.add(tf.keras.layers.Conv2D(filters=30, kernel_size=5, padding='valid', activation='linear', kernel_initializer='glorot_normal', use_bias=False))
+model.add(tf.keras.layers.Conv2D(filters=30, kernel_size=5, padding='valid', activation='linear', kernel_initializer='glorot_normal', kernel_regularizer=tf.keras.regularizers.l2(weight_decay), use_bias=False))
 model.add(tf.keras.layers.Lambda(lambda x: tf.keras.backend.abs(x)))
 model.add(tf.keras.layers.BatchNormalization(momentum=.95))
 model.add(tf.keras.layers.Lambda(lambda x: tf.clip_by_value(x, -3, 3)))
 
 
 model.add(tf.keras.layers.ZeroPadding2D(padding=(2,2)))
-model.add(tf.keras.layers.Conv2D(filters=30, kernel_size=5, padding='valid', activation='linear', kernel_initializer='glorot_normal', use_bias=False))
+model.add(tf.keras.layers.Conv2D(filters=30, kernel_size=5, padding='valid', activation='linear', kernel_initializer='glorot_normal',kernel_regularizer=tf.keras.regularizers.l2(weight_decay), use_bias=False))
 model.add(tf.keras.layers.BatchNormalization(momentum=.95))
 model.add(tf.keras.layers.Lambda(lambda x: tf.clip_by_value(x, -2, 2)))
 model.add(tf.keras.layers.AveragePooling2D(pool_size=(5,5), strides=2, padding="same"))
 
 
 model.add(tf.keras.layers.ZeroPadding2D(padding=(1,1)))
-model.add(tf.keras.layers.Conv2D(filters=32, kernel_size=3, padding='valid', activation='linear', kernel_initializer='glorot_normal', use_bias=False))
+model.add(tf.keras.layers.Conv2D(filters=32, kernel_size=3, padding='valid', activation='linear', kernel_initializer='glorot_normal',kernel_regularizer=tf.keras.regularizers.l2(weight_decay), use_bias=False))
 model.add(tf.keras.layers.BatchNormalization(momentum=.95))
 model.add(tf.keras.layers.ReLU())
 model.add(tf.keras.layers.AveragePooling2D(pool_size=(5,5), strides=2, padding="same"))
 
 model.add(tf.keras.layers.ZeroPadding2D(padding=(1,1)))
-model.add(tf.keras.layers.Conv2D(filters=64, kernel_size=3, padding='valid', activation='linear', kernel_initializer='glorot_normal', use_bias=False))
+model.add(tf.keras.layers.Conv2D(filters=64, kernel_size=3, padding='valid', activation='linear', kernel_initializer='glorot_normal', kernel_regularizer=tf.keras.regularizers.l2(weight_decay),use_bias=False))
 model.add(tf.keras.layers.BatchNormalization(momentum=.95))
 model.add(tf.keras.layers.ReLU())
 model.add(tf.keras.layers.AveragePooling2D(pool_size=(5,5), strides=2, padding="same"))
 
 
 model.add(tf.keras.layers.ZeroPadding2D(padding=(1,1)))
-model.add(tf.keras.layers.Conv2D(filters=128, kernel_size=3, padding='valid', activation='linear', kernel_initializer='glorot_normal', use_bias=False))
+model.add(tf.keras.layers.Conv2D(filters=128, kernel_size=3, padding='valid', activation='linear', kernel_initializer='glorot_normal',kernel_regularizer=tf.keras.regularizers.l2(weight_decay), use_bias=False))
 model.add(tf.keras.layers.BatchNormalization(momentum=.95))
 model.add(tf.keras.layers.ReLU())
 model.add(tf.keras.layers.GlobalAveragePooling2D())
 
 
-model.add(tf.keras.layers.Flatten()) # note that in the paper they use reshape to 64x4 instead of flattening
-model.add(tf.keras.layers.Dense(256, activation='relu', kernel_initializer='glorot_normal'))
-model.add(tf.keras.layers.Dense(1024, activation='relu', kernel_initializer='glorot_normal'))
+#model.add(tf.keras.layers.Flatten()) # note that in the paper they use reshape to 64x4 instead of flattening
+model.add(tf.keras.layers.Dense(256, activation='relu', kernel_initializer='glorot_normal', kernel_regularizer=tf.keras.regularizers.l2(weight_decay)))
+model.add(tf.keras.layers.Dense(1024, activation='relu', kernel_initializer='glorot_normal', kernel_regularizer=tf.keras.regularizers.l2(weight_decay)))
 model.add(tf.keras.layers.Dense(2))
 model.add(tf.keras.layers.Softmax())
 
@@ -278,7 +303,7 @@ from keras.callbacks import ModelCheckpoint
 
 checkpointer = ModelCheckpoint(filepath='model.weights.best', verbose=1, save_best_only=True)
 
-model.fit(x_train, y_train, batch_size=16, epochs=int(sys.argv[4]), shuffle=True, validation_split=.15, verbose=2, callbacks=[lrate])
+model.fit(x_train, y_train, batch_size=16, epochs=int(sys.argv[4]), shuffle=False, validation_split=.15, verbose=2, callbacks=[lrate])
 
 
 #model.load_weights('model.weights.best')
