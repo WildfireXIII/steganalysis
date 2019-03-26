@@ -89,8 +89,9 @@ print(failed_stego)
 
 # remove all failed images
 
-for i in range(0, len(stego_images)):
-    if stego_images[i] == None or cover_images[i] == None:
+count = len(stego_images)
+for i in range(count, 0, -1):
+    if stego_images[i] is None or cover_images[i] is None:
         del stego_images[i]
         del cover_images[i]
 
