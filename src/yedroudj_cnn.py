@@ -91,6 +91,7 @@ failed = failed_cover
 failed.sort()
 failed.reverse()
 failed = list(set(failed))
+print(failed)
 
 
 # remove all failed images
