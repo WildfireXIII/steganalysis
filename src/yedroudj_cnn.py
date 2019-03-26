@@ -99,8 +99,12 @@ for i in range(0, len(failed)):
     #del stego_images[i]
     #del cover_images[i]
     index = failed[i]
+    print(index)
     stego_images.pop(index)
     cover_images.pop(index)
+    
+print(stego_images)
+print(cover_images)
 
 #for i in range(0, len(stego_images)):
 #    if stego_images[i] is None or cover_images[i] is None:
